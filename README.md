@@ -30,3 +30,5 @@ To install ppca manually you need a running version of python 3. Step-by-step in
     ```pip install PyQt5 xlsxwriter```
  7. Install the ppca package into the virtual environment<br>
     ```pip install -e .```
+
+## Usage
