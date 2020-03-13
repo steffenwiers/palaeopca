@@ -28,7 +28,7 @@ class P1PixmapCache(object):
             except KeyError:
                 if not os.path.isabs(key):
                     for path in self.searchPath:
-                        pm = QPixmap(os.path.join(path, style, key + ".svg"))
+                        pm = QPixmap(os.path.join(path, key + ".svg"))
                         if not pm.isNull():
                             break
                         else:

@@ -1,1 +1,1 @@
-recursive-include ppca/icons/ *
+include ppca/icons/*.svg

@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name = "ppca-tool",
-    version = "1.0.1",
+    version = "1.0.2",
     author = "Steffen Wiers",
     author_email = "steffen.p.wiers@gmail.com",
-    description = "Tool to perform principal component analysis on palaeomagnetic data sets",
+    description = "Tool to perform principal component analysis on palaeomagnetic data sets.",
     long_description = long_description,
     long_description_content_type = "text/markdown",
     url = "https://github.com/steffenwiers/ppca-tool",

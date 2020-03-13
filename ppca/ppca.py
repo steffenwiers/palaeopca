@@ -11,7 +11,7 @@ def main():
 
     # set icon and pixmap path
     defaultIconPaths = [
-        os.path.join(ppca.basedir, "icons", "fontawesome-free"),
+        os.path.join(ppca.basedir, "icons"),
     ]
 
     for defaultIconPath in defaultIconPaths:
