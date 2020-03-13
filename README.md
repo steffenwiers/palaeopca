@@ -15,18 +15,29 @@ To install ppca manually you need a running version of python 3 and at least Num
  1. Clone the repository.
  2. Open a command promt (Windows) or a terminal window (Unix) and navigate to the root folder of ppca (the one that contains setup.py).
  3. Create a python virtual environment by running:
+
     ```python -m venv ppca_venv```
+
  4. Activate the virtual environment
+
     Windows: ```source ./venv/Scripts/activate```
     Unix: ```source ./venv/bin/activate```
+
  5. Install required dependencies into the virtual environment
+
     ```pip install numpy matplotlib```
+
  6. Install optional dependencies  into the virtual environment (optional)
+
     ```pip install PyQt5 xlsxwriter```
+
  7. Install the ppca package into the virtual environment
+
     ```pip install -e .```
 
 ### PyPI
 To install ppca via pip simply run the following commands:
+
 ```pip install ppca numpy matplotlib```
+
 ```pip install PyQt5 xlsxwriter``` (optional)
