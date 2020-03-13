@@ -10,8 +10,13 @@ PPCA tools provides three convinient functions for PCA of palaeomagnetic sequenc
 The user interface makes it possible to run ppca without any knowledge of the python programming language. It allows for data import, display and analysis and well as export of the results as comma separated files, Excel files and images.
 
 ## Installation
+The minimum required packages to run ppca are NumPy and Matplotlib. For gui support PyQt5 and for Excel file integration xlsxwriter are required.
+### PyPI (Recommended)
+To install ppca via pip simply run the following commands:<br>
+```pip install ppca numpy matplotlib```<br>
+```pip install PyQt5 xlsxwriter``` (optional)
 ### Manual
-To install ppca manually you need a running version of python 3 and at least NumPy and Matplotlib. For gui support you also need PyQt5 and for Excel file integration you need xlsxwriter. Step-by-step instructions:
+To install ppca manually you need a running version of python 3. Step-by-step instructions:
  1. Clone the repository.
  2. Open a command promt (Windows) or a terminal window (Unix) and navigate to the root folder of ppca (the one that contains setup.py).
  3. Create a python virtual environment by running<br>
@@ -25,8 +30,3 @@ To install ppca manually you need a running version of python 3 and at least Num
     ```pip install PyQt5 xlsxwriter```
  7. Install the ppca package into the virtual environment<br>
     ```pip install -e .```
-
-### PyPI
-To install ppca via pip simply run the following commands:<br>
-```pip install ppca numpy matplotlib```<br>
-```pip install PyQt5 xlsxwriter``` (optional)
