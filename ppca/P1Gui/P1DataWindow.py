@@ -1,5 +1,5 @@
 # Qt
-from PyQt5.QtCore import Qt, QCoreApplication, pyqtSlot
+from PyQt5.QtCore import Qt, QCoreApplication, pyqtSlot, QSettings
 from PyQt5.QtWidgets import QWidget, QGridLayout, QTableView, QMenuBar, QMenu, QToolButton, QComboBox, QAction, QDialog, QMdiSubWindow, QSplitter
 
 # Matplotlib
@@ -210,6 +210,8 @@ class P1DataWindow(QWidget):
     
     @pyqtSlot()
     def __updateFigure(self, index: int):
+        s = QSettings()
+
         # Set buttons
         if index == 0: # no more going left
             self.__prevButton.setDisabled(True)
@@ -222,7 +224,11 @@ class P1DataWindow(QWidget):
         # Update figure
         current_sample = self.__sampleCombo.currentText()
         current_data = self.__data.get_data(current_sample)
-        self.__figure = zijder_plot(current_sample, current_data, figure = self.__figure, units = self.__data.get_units())
+        xh = s.value("Zijder/xh", "N")
+        xv = s.value("Zijder/xv", "N")
+        y = s.value("Zijder/y", "W")
+        z = s.value("Zijder/z", "Up")
+        self.__figure = zijder_plot(current_sample, current_data, xh, xv, y, z, figure = self.__figure, units = self.__data.get_units())
         self.__canvas.draw()
 
         QCoreApplication.processEvents()

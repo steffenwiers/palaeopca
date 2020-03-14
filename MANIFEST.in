@@ -1,1 +1,2 @@
 include ppca/icons/*.svg
+include ppca/P1Mpl/styles/*.mplstyle

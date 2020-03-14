@@ -58,7 +58,7 @@ class P1SettingsDialog(QDialog):
         self.__import_widget = P1ImportSettings(self)
         self.__zijder_widget = P1ZijderSettings(self)
         self.__sequence_widget = P1SequenceSettings(self)
-        self.__mesh_widget = None
+        self.__mesh_widget = P1MeshSettings(self)
 
         # Scroll area
         self.__scroll_widget = QScrollArea()
@@ -128,7 +128,7 @@ class P1SettingsDialog(QDialog):
             self.__sequence_widget.load_settings()
         elif item.text() == "Mesh plots":
             self.__scroll_widget.setWidget(self.__mesh_widget)
-            #self.__mesh_widget.load_settings()
+            self.__mesh_widget.load_settings()
 
     def __on_ok_button_clicked(self):
         if self.__changes:
@@ -168,6 +168,9 @@ class P1SettingsDialog(QDialog):
 
         if self.__sequence_widget.loaded:
             self.__sequence_widget.save_settings()
+
+        if self.__mesh_widget.loaded:
+            self.__mesh_widget.save_settings()
 
         self.__changes = False
 
@@ -311,7 +314,7 @@ class P1ZijderSettings(QWidget):
         self.__pathPicker = P1PathPicker("file", "Matplotlib style files (*.mplstyle)", "Choose Matplotlib style file")
 
         # Figure box widgets
-        self.figureBox = QGroupBox("Figure")
+        self.figureBox = QGroupBox("Default Export Parameters")
         self.__figureLayout = QGridLayout(self.figureBox)
 
         self.__formatLabel = QLabel("File format")
@@ -385,9 +388,9 @@ class P1ZijderSettings(QWidget):
         self.__layout.addWidget(self.__fileLabel, 0, 0)
         self.__layout.addWidget(self.__pathPicker, 0, 1)
         
-        self.__layout.addWidget(self.figureBox, 1, 0, 1, 2)
-        self.__layout.addWidget(self.dirBox, 2, 0, 1, 2)
-        self.__layout.addWidget(self.PCABox, 3, 0, 1, 2)
+        self.__layout.addWidget(self.dirBox, 1, 0, 1, 2)
+        self.__layout.addWidget(self.PCABox, 2, 0, 1, 2)
+        self.__layout.addWidget(self.figureBox, 3, 0, 1, 2)
 
     def load_settings(self):
         if not self.loaded:
@@ -472,7 +475,7 @@ class P1SequenceSettings(QWidget):
         self.__pathPicker = P1PathPicker("file", "Matplotlib style files (*.mplstyle)", "Choose Matplotlib style file")
 
         # Figure box widgets
-        self.figureBox = QGroupBox("Figure")
+        self.figureBox = QGroupBox("Default Export Parameters")
         self.__figureLayout = QGridLayout(self.figureBox)
 
         self.__formatLabel = QLabel("File format")
@@ -611,8 +614,8 @@ class P1MeshSettings(QWidget):
         self.__fileLabel = QLabel("Mpl style:")
         self.__pathPicker = P1PathPicker("file", "Matplotlib style files (*.mplstyle)", "Choose Matplotlib style file")
 
-        # Figure box widgets
-        self.figureBox = QGroupBox("Figure")
+        # Figure box widget
+        self.figureBox = QGroupBox("Default Export Parameters")
         self.__figureLayout = QGridLayout(self.figureBox)
 
         self.__formatLabel = QLabel("File format")
@@ -640,7 +643,7 @@ class P1MeshSettings(QWidget):
         self.__figureLayout.addWidget(self.__figureHLabel, 1, 2)
         self.__figureLayout.addWidget(self.__figure_height, 1, 3)
 
-        # Parameter box widgets
+        # Parameter box widget
         self.paramBox = QGroupBox("Parameters")
         self.__paramLayout = QGridLayout(self.paramBox)
 
@@ -658,30 +661,73 @@ class P1MeshSettings(QWidget):
         self.__paramLayout.addWidget(self.__mado_check, 2, 0)
         self.__paramLayout.addWidget(self.__inv_check, 2, 1)
 
+        # Colormaps box widget
+        self.cmapBox = QGroupBox("Colormaps")
+        self.__cmapLayout = QGridLayout(self.cmapBox)
+
+        self.__cmapNRMLabel = QLabel("NRM")
+        self.__cmapIncLabel = QLabel("Inclination")
+        self.__cmapDecLabel = QLabel("Declination")
+        self.__cmapMADpLabel = QLabel("MADp")
+        self.__cmapMADoLabel = QLabel("MADo")
+
+        self.__cmapNRMCombo = QComboBox()
+        self.__cmapIncCombo = QComboBox()
+        self.__cmapDecCombo = QComboBox()
+        self.__cmapMADpCombo = QComboBox()
+        self.__cmapMADoCombo = QComboBox()
+
+        cmaps = plt.colormaps()
+
+        self.__cmapNRMCombo.addItems(cmaps)
+        self.__cmapIncCombo.addItems(cmaps)
+        self.__cmapDecCombo.addItems(cmaps)
+        self.__cmapMADpCombo.addItems(cmaps)
+        self.__cmapMADoCombo.addItems(cmaps)
+
+        self.__cmapLayout.addWidget(self.__cmapNRMLabel, 0, 0)
+        self.__cmapLayout.addWidget(self.__cmapIncLabel, 1, 0)
+        self.__cmapLayout.addWidget(self.__cmapDecLabel, 2, 0)
+        self.__cmapLayout.addWidget(self.__cmapMADpLabel, 3, 0)
+        self.__cmapLayout.addWidget(self.__cmapMADoLabel, 4, 0)
+
+        self.__cmapLayout.addWidget(self.__cmapNRMCombo, 0, 1)
+        self.__cmapLayout.addWidget(self.__cmapIncCombo, 1, 1)
+        self.__cmapLayout.addWidget(self.__cmapDecCombo, 2, 1)
+        self.__cmapLayout.addWidget(self.__cmapMADpCombo, 3, 1)
+        self.__cmapLayout.addWidget(self.__cmapMADoCombo, 4, 1)
+
         self.__layout.addWidget(self.__fileLabel, 0, 0)
         self.__layout.addWidget(self.__pathPicker, 0, 1)
         
-        self.__layout.addWidget(self.figureBox, 1, 0, 1, 2)
-        self.__layout.addWidget(self.paramBox, 2, 0, 1, 2)
+        self.__layout.addWidget(self.paramBox, 1, 0, 1, 2)
+        self.__layout.addWidget(self.cmapBox, 2, 0, 1, 2)
+        self.__layout.addWidget(self.figureBox, 3, 0, 1, 2)
 
     def load_settings(self):
         if not self.loaded:
             s = QSettings()
 
-            self.__pathPicker.setPath(s.value("Sequence/Style", "./ppca/P1Mpl/styles/sequence.mplstyle"))
+            self.__pathPicker.setPath(s.value("Mesh/Style", "./ppca/P1Mpl/styles/sequence.mplstyle"))
 
-            self.__format_combo.setCurrentText(s.value("Sequence/fmt", "png"))
-            size = literal_eval(s.value("Sequence/Size", "(5, 5)"))
+            self.__format_combo.setCurrentText(s.value("Mesh/fmt", "png"))
+            size = literal_eval(s.value("Mesh/Size", "(5, 5)"))
             self.__figure_width.setText(str(size[0]))
             self.__figure_height.setText(str(size[1]))
-            self.__figure_dpi.setText(str(s.value("Sequence/dpi", "300")))
+            self.__figure_dpi.setText(str(s.value("Mesh/dpi", "300")))
 
-            self.__nrm_check.setChecked(literal_eval(s.value("Sequence/NRM", "True")))
-            self.__inc_check.setChecked(literal_eval(s.value("Sequence/Incl", "True")))
-            self.__dec_check.setChecked(literal_eval(s.value("Sequence/Decl", "True")))
-            self.__madp_check.setChecked(literal_eval(s.value("Sequence/MADp", "True")))
-            self.__mado_check.setChecked(literal_eval(s.value("Sequence/MADo", "True")))
-            self.__inv_check.setChecked(literal_eval(s.value("Sequence/invertY", "True")))
+            self.__nrm_check.setChecked(literal_eval(s.value("Mesh/NRM", "True")))
+            self.__inc_check.setChecked(literal_eval(s.value("Mesh/Incl", "True")))
+            self.__dec_check.setChecked(literal_eval(s.value("Mesh/Decl", "True")))
+            self.__madp_check.setChecked(literal_eval(s.value("Mesh/MADp", "True")))
+            self.__mado_check.setChecked(literal_eval(s.value("Mesh/MADo", "True")))
+            self.__inv_check.setChecked(literal_eval(s.value("Mesh/invertY", "True")))
+
+            self.__cmapNRMCombo.setCurrentText(s.value("Mesh/NRMcmap", "tab20c"))
+            self.__cmapIncCombo.setCurrentText(s.value("Mesh/INCcmap", "PRGn"))
+            self.__cmapDecCombo.setCurrentText(s.value("Mesh/DECcmap", "PRGn"))
+            self.__cmapMADpCombo.setCurrentText(s.value("Mesh/MADpcmap", "hot"))
+            self.__cmapMADoCombo.setCurrentText(s.value("Mesh/MADocmap", "hot"))
 
             self.__pathPicker.lineChanged.connect(self.__dlg.set_active)
             self.__figure_width.textEdited.connect(self.__dlg.set_active)
@@ -696,42 +742,55 @@ class P1MeshSettings(QWidget):
             self.__mado_check.stateChanged.connect(self.__dlg.set_active)
             self.__inv_check.stateChanged.connect(self.__dlg.set_active)
 
+            self.__cmapNRMCombo.currentIndexChanged.connect(self.__dlg.set_active)
+            self.__cmapIncCombo.currentIndexChanged.connect(self.__dlg.set_active)
+            self.__cmapDecCombo.currentIndexChanged.connect(self.__dlg.set_active)
+            self.__cmapMADpCombo.currentIndexChanged.connect(self.__dlg.set_active)
+            self.__cmapMADoCombo.currentIndexChanged.connect(self.__dlg.set_active)
+
             self.loaded = True
 
     def save_settings(self):
         s = QSettings()
 
-        s.setValue("Sequence/Style", self.__pathPicker.getPath())
+        s.setValue("Mesh/Style", self.__pathPicker.getPath())
 
-        s.setValue("Sequence/fmt", self.__format_combo.currentText())
-        s.setValue("Sequence/Size", "({0}, {1})".format(self.__figure_width.text(), self.__figure_height.text()))
-        s.setValue("Sequence/dpi", self.__figure_dpi.text())
+        s.setValue("Mesh/fmt", self.__format_combo.currentText())
+        s.setValue("Mesh/Size", "({0}, {1})".format(self.__figure_width.text(), self.__figure_height.text()))
+        s.setValue("Mesh/dpi", self.__figure_dpi.text())
+
         if self.__nrm_check.isChecked():
-            s.setValue("Sequence/NRM", "True")
+            s.setValue("Mesh/NRM", "True")
         else:
-            s.setValue("Sequence/NRM", "False")
+            s.setValue("Mesh/NRM", "False")
 
         if self.__inc_check.isChecked():
-            s.setValue("Sequence/Incl", "True")
+            s.setValue("Mesh/Incl", "True")
         else:
-            s.setValue("Sequence/Incl", "False")
+            s.setValue("Mesh/Incl", "False")
 
         if self.__dec_check.isChecked():
-            s.setValue("Sequence/Decl", "True")
+            s.setValue("Mesh/Decl", "True")
         else:
-            s.setValue("Sequence/Decl", "False")
+            s.setValue("Mesh/Decl", "False")
 
         if self.__madp_check.isChecked():
-            s.setValue("Sequence/MADp", "True")
+            s.setValue("Mesh/MADp", "True")
         else:
-            s.setValue("Sequence/MADp", "False")
+            s.setValue("Mesh/MADp", "False")
 
         if self.__mado_check.isChecked():
-            s.setValue("Sequence/MADo", "True")
+            s.setValue("Mesh/MADo", "True")
         else:
-            s.setValue("Sequence/MADo", "False")
+            s.setValue("Mesh/MADo", "False")
 
         if self.__inv_check.isChecked():
-            s.setValue("Sequence/invertY", "True")
+            s.setValue("Mesh/invertY", "True")
         else:
-            s.setValue("Sequence/invertY", "False")
+            s.setValue("Mesh/invertY", "False")
+
+        s.setValue("Mesh/NRMcmap", self.__cmapNRMCombo.currentText())
+        s.setValue("Mesh/INCcmap", self.__cmapIncCombo.currentText())
+        s.setValue("Mesh/DECcmap", self.__cmapDecCombo.currentText())
+        s.setValue("Mesh/MADpcmap", self.__cmapMADpCombo.currentText())
+        s.setValue("Mesh/MADocmap", self.__cmapMADoCombo.currentText())

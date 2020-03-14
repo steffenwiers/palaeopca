@@ -33,30 +33,6 @@ class P1DataObject(object):
     def get_units(self):
         return self.__units
 
-    def convert_units(self, new_units):
-        """
-        Sets input and output units. Converts from input to output.
-
-        Keywords:
-            units_in: input units
-            units_out: output_units
-
-        Possible units: emu, Am2, A/m
-        """        
-        if self.__units == "emu" and units_out == "Am2":
-            self.__data[:, :, 2:] = self.__data[:, :, 2:] * 10**(-3)
-        elif self.__units == "emu" and units_out == "A/m":
-            self.__data[:, :, 2:] = self.__data[:, :, 2:] / self.__volume * 10**(3)
-        elif self.__units == "Am2" and units_out == "emu":
-            self.__data[:, :, 2:] = self.__data[:, :, 2:] * 10**(3)
-        elif self.__units == "A/m" and units_out == "emu":
-            self.__data[:, :, 2:] = self.__data[:, :, 2:] * self.__volume * 10**(-3)
-
-        self.__units = new_units
-
-    def get_units(self):
-        return self.__units
-
     def get_volume(self):
         return self.__volume
         

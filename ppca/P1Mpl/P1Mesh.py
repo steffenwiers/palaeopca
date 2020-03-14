@@ -38,6 +38,7 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
             Decl: plot Declination (bool, default: True)
             MADp: plot MADp (bool, default: True)
             MADo: plot MADo (bool, default: True)
+            cmap: str or list of matplotlib colormap names (str or list, default: ["tab20c", "PRGn", "PRGn", "hot", "hot"])
             invertY: invert order of samples (bool, default: True)
             ylabel: label for y-axis (str, default: "")
 
@@ -45,7 +46,7 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
         matplotlib figure instance.
     """
     # Set style
-    plt.style.use("./ppca/P1Mpl/styles/sequence.mplstyle")
+    plt.style.use("./ppca/P1Mpl/styles/mesh.mplstyle")
 
     # Set parameters
     if "figure" not in kwargs:
@@ -54,6 +55,7 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
         kwargs["figsize"] = (5, 6)
     if "dpi" not in kwargs:
         kwargs["dpi"] = 300
+
     if "NRM" not in kwargs:
         kwargs["NRM"] = True
     if "NRM_unit" not in kwargs:
@@ -66,8 +68,17 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
         kwargs["MADp"] = True
     if "MADo" not in kwargs:
         kwargs["MADo"] = True
+
+    if "cmap" not in kwargs:
+        kwargs["cmap"] = ["tab20c", "PRGn", "PRGn", "hot", "hot"]
+    else:
+        if type(kwargs["cmap"]) == str:
+            kwargs["cmap"] = [kwargs["cmap"]] * 5
+
     if "ylabel" not in kwargs:
         kwargs["ylabel"] = ""
+    if "invertY" not in kwargs:
+        kwargs["invertY"] = True
     
     if all (par == False in kwargs for par in ("NRM", "Incl", "Decl", "MADp", "MADo")):
         # Nothing to plot, return
@@ -76,12 +87,10 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
         cols = [kwargs["NRM"], kwargs["Incl"], kwargs["Decl"], kwargs["MADp"], kwargs["MADo"]]
         indices = [i+1 for i, x in enumerate(cols) if x == True]
 
-    if "invertY" not in kwargs:
-        kwargs["invertY"] = True
-
     # Prepare figure
     ncols = cols.count(True)
     ax = [None] * ncols
+    cax = [None] * ncols
     grid = gridspec.GridSpec(1, ncols)
     if kwargs["figure"] != None:
         fig = kwargs["figure"]
@@ -92,6 +101,7 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
     for n in range(ncols):
         # Add axis and data
         ax[n] = fig.add_subplot(grid[0, n])
+        
         #ax[n].plot(indata[:, indices[n]], indata[:,0], 'o-', clip_on = False)
         x = indata["Centers"]
         y = indata["Samples"]
@@ -101,21 +111,24 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
         if indices[n] == 1: # NRM
             x = indata["Steps"]
             c = indata["M"] / np.amax(indata["M"], axis = 0)
-            cmap = "tab20c"
+            cmap = kwargs["cmap"].pop(0)
+            vmin = 0
         elif indices[n] == 2: # Inclination
             c = indata["Inclination"]
             vmin = -90
             vmax = 90
+            cmap = kwargs["cmap"].pop(0)#
         elif indices[n] == 3: # Declination
             c = indata["Declination"]
             vmin = 0
             vmax = 360
+            cmap = kwargs["cmap"].pop(0)#
         elif indices[n] == 4: # MADp
             c = indata["MADp"]
-            cmap = "hot"
+            cmap = kwargs["cmap"].pop(0)#
         elif indices[n] == 5: # MADo
             c = indata["MADo"]
-            cmap = "hot"
+            cmap = kwargs["cmap"].pop(0)#
 
         mesh = ax[n].pcolormesh(x, y, c, cmap = cmap, norm = None, edgecolor = None, vmin = vmin, vmax = vmax)
 
@@ -157,26 +170,30 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
         # Set specific parameters
         if indices[n] == 1:
             ax[n].set_xlabel("M/M$_0$")
+            ticks = [0, 0.5, 1]
         if indices[n] == 2: # Inclination
-            #ax[n].set_xlim([-90, 90])
-            #ax[n].set_xticks([-90,0,90])
             ax[n].set_xlabel("Inclination (°)")
+            ticks = [-90, 0, 90]
         elif indices[n] == 3: # Declination
-            #ax[n].set_xlim([0, 360])
-            #ax[n].set_xticks([0,180,360])
             ax[n].set_xlabel("Declination (°)")
+            ticks = [0, 180, 360]
         elif indices[n] == 4: # MADp
             ax[n].set_xlabel("MADp (°)")
+            ticks = None
         elif indices[n] == 5: # MADp
             ax[n].set_xlabel("MADo (°)")
+            ticks = None
 
-        cax = inset_axes(ax[n], width="100%",  height="2%",  loc=loc, bbox_to_anchor=(0, y_adjust, 1, 1), bbox_transform = ax[n].transAxes)
-        fig.colorbar(mesh, cax = cax, orientation = "horizontal")
+        # Create colorbar
+        cax[n] = inset_axes(ax[n], width="100%",  height="2%",  loc=loc, bbox_to_anchor=(0, y_adjust, 1, 1), bbox_transform = ax[n].transAxes)
+        fig.colorbar(mesh, cax = cax[n], orientation = "horizontal", ticks = ticks)
         if loc == "upper center":
-            cax.tick_params(axis='x', top = True, bottom = False, labeltop = True, labelbottom = False)
-            cax.xaxis.set_label_position("top")
+            cax[n].tick_params(axis='x', top = True, bottom = False, labeltop = True, labelbottom = False)
+            cax[n].xaxis.set_label_position("top")
 
+        # Set x-axis limits
         ax[n].set_xlim([indata["Steps"].min(), indata["Steps"].max()])
+
     for n in range(1, ncols-1):
         ax[n].set_yticklabels('')
 
