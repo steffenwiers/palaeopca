@@ -1,8 +1,9 @@
 # Standard library
 import sys
+from ast import literal_eval
 
 # Qt
-from PyQt5.QtCore import Qt, QCoreApplication, pyqtSlot
+from PyQt5.QtCore import Qt, QCoreApplication, pyqtSlot, QSettings
 from PyQt5.QtWidgets import QWidget, QGridLayout, QTableView, QMenuBar, QMenu, QToolButton, QComboBox, QAction, QTabWidget, QVBoxLayout, QFileDialog, QMessageBox, QDialog
 
 # Matplotlib
@@ -29,6 +30,11 @@ import ppca.P1Utils.P1PixmapCache
 class P1PCAWindow(QWidget):
     def __init__(self, parent = None):
         super(P1PCAWindow, self).__init__(parent)
+
+        s = QSettings()
+        self.__anno = literal_eval(s.value("Zijder/anno", "True"))
+        self.__mark = literal_eval(s.value("Zijder/mark", "True"))
+        self.__line = literal_eval(s.value("Zijder/line", "True"))
 
         self.__setupGui()
         self.__connectGui()
@@ -154,8 +160,10 @@ class P1PCAWindow(QWidget):
     def __on_next_button_clicked(self):
         self.__sampleCombo.setCurrentIndex(self.__sampleCombo.currentIndex() + 1)
     
-    @pyqtSlot()
+    @pyqtSlot(int)
     def __update_zijder(self, index: int):
+        s = QSettings()
+
         # Set buttons
         if index == 0: # no more going left
             self.__prevButton.setDisabled(True)
@@ -168,14 +176,20 @@ class P1PCAWindow(QWidget):
         # Update figure
         current_sample = self.__sampleCombo.currentText()
         current_data = self.__data.get_data(current_sample)
+        xh = s.value("Zijder/xh", "N")
+        xv = s.value("Zijder/xv", "N")
+        y = s.value("Zijder/y", "W")
+        z = s.value("Zijder/z", "Up")
+
         self.__zijder_figure = zijder_plot(
             current_sample, 
             current_data,
+            xh, xv, y, z,
             pca_results = self.__results[self.__sampleCombo.currentIndex()], 
             pca_steps = self.__data.get_steps(), 
-            pca_anno = True,
-            pca_points = True,
-            pca_lines = True,
+            pca_anno = self.__anno,
+            pca_points = self.__mark,
+            pca_lines = self.__line,
             figure = self.__zijder_figure
         )
         self.__zijder_canvas.draw()

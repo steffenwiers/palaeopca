@@ -207,12 +207,18 @@ def zijder_plot(sample: str, indata: np.ndarray, xh: str = "N", xv: str = "N", y
 
         # Calculate line angle for horizontal projection
         angleRad = np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(decRad)))
-        
-        # Calculate vertical projection line parameters
-        x_v, y_v = PCALine(data[xv][ind], data[z][ind], -angleRad, 1.5)
+        if xv == "S": angleRad = -1 * angleRad
+        if xv == "E": angleRad = -1 * angleRad# + np.radians(45) ????
+        # TODO
+        # get right orientation for E and W projections
+        if z == "Up": angleRad = -1 * angleRad
+
+        # Calculate vertical projection line parameters        
+        x_v, y_v = PCALine(data[xv][ind], data[z][ind], angleRad, 1.5)
 
         # Calculate line angle for vertical projection
         angleRad = -1 * (np.pi / 2 + (-1) * np.radians(kwargs["pca_results"][3]))
+        if y == "E": angleRad = -1 * angleRad
 
         # Calculate vertical projection line parameters
         x_h, y_h = PCALine(data[xh][ind], data[y][ind], angleRad, 1.5)
@@ -222,7 +228,7 @@ def zijder_plot(sample: str, indata: np.ndarray, xh: str = "N", xv: str = "N", y
             ax.plot(x_v, y_v, "-", color = "black")
             ax.plot(x_h, y_h, "-", color = "black")
         else:
-            if len(ax.get_lines()) == 2:
+            if len(ax.get_lines()) == 4:
                 ax.get_lines()[2].set_data(x_v, y_v)
                 ax.get_lines()[3].set_data(x_h, y_h)
             else:

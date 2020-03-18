@@ -208,7 +208,7 @@ class P1DataWindow(QWidget):
     def __on_next_button_clicked(self):
         self.__sampleCombo.setCurrentIndex(self.__sampleCombo.currentIndex() + 1)
     
-    @pyqtSlot()
+    @pyqtSlot(int)
     def __updateFigure(self, index: int):
         s = QSettings()
 
