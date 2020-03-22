@@ -1,8 +1,8 @@
-# ppca
+# Palaeo PCA
 A python tool to perform principal component (PCA) analysis on palaeomagnetic data sets.
 
 ## Main features
-PPCA tools provides three convinient functions for PCA of palaeomagnetic sequence data, such as continues data from marine sediment cores. The underlying functionallity can be used without the gui by importing P1Backend directly into your code. The backend provides:
+palaeopca provides three convinient functions for PCA of palaeomagnetic sequence data, such as continues data from marine sediment cores. The underlying functionallity can be used without the gui by importing P1Backend directly into your code. The backend provides:
  - Single interval PCA to analyse all samples in a given interval
  - Best fit PCA to find the lowest possible medium angular deviation (MAD) for each sample
  - Mesh PCA to run a moving window PCA
@@ -13,14 +13,14 @@ The user interface makes it possible to run ppca without any knowledge of the py
 The minimum required packages to run ppca are NumPy and Matplotlib. For gui support PyQt5 and for Excel file integration xlsxwriter are required.
 ### PyPI (Recommended)
 To install ppca via pip simply run the following commands:<br>
-```pip install ppca-tool numpy matplotlib```<br>
+```pip install palaeopca numpy matplotlib```<br>
 ```pip install PyQt5 xlsxwriter``` (optional)
 ### Manual
-To install ppca manually you need a running version of python 3. Step-by-step instructions:
+To install palaeopca manually you need a running version of python 3. Step-by-step instructions:
  1. Clone the repository.
  2. Open a command promt (Windows) or a terminal window (Unix) and navigate to the root folder of ppca (the one that contains setup.py).
  3. Create a python virtual environment by running<br>
-    ```python -m venv ppca_venv```
+    ```python -m venv palaeopca_venv```
  4. Activate the virtual environment<br>
     Windows: ```source ./venv/Scripts/activate```<br>
     Unix: ```source ./venv/bin/activate```
