@@ -22,13 +22,15 @@ To install palaeopca manually you need a running version of python 3. Step-by-st
  3. Create a python virtual environment by running<br>
     ```python -m venv palaeopca_venv```
  4. Activate the virtual environment<br>
-    Windows: ```source ./venv/Scripts/activate```<br>
-    Unix: ```source ./venv/bin/activate```
+    Windows: ```.\palaeopca_venv\Scripts\activate```<br>
+    If you get an Execution Policy error on Windows run<br>
+    ```Set-ExecutionPolicy Unrestricted -Scope CurrentUser```<br>
+    Unix: ```source ./venv/bin/activate``` 
  5. Install required dependencies into the virtual environment<br>
     ```pip install numpy matplotlib```
  6. Install optional dependencies  into the virtual environment (optional)<br>
     ```pip install PyQt5 xlsxwriter```
- 7. Install the ppca package into the virtual environment<br>
+ 7. Install the palaeopca package into the virtual environment<br>
     ```pip install -e .```
 
 ## Usage

@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QApplication
 # ppca
 import palaeopca
 from palaeopca.P1Gui import P1MainWindow
-from alaeopca.P1Backend import P1Backend
+from palaeopca.P1Backend import P1Backend
 
 
 def run():

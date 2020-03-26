@@ -1,3 +1,4 @@
+#! python
 '''
     Copyright 2020 Steffen Wiers <steffen.p.wiers@gmail.com>
     This file is part of PPCA
@@ -6,7 +7,7 @@
 '''
 
 import sys
-import palaeopca.ppca
+import palaeopca.palaeopca
 
 if __name__ == '__main__':
-    sys.exit(ppca.ppca.main())
+    sys.exit(palaeopca.palaeopca.main())

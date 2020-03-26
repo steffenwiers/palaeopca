@@ -1,2 +1,2 @@
-include ppca/icons/*.svg
-include ppca/P1Mpl/styles/*.mplstyle
+include palaeopca/icons/*.svg
+include palaeopca/P1Mpl/styles/*.mplstyle

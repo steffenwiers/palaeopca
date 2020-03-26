@@ -1,10 +1,10 @@
 # Byte-compiled / optimized / DLL files
-ppca/__pycache__/
-ppca/*.py[cod]
-ppca/P1Backend/__pycache__/
-ppca/P1Gui/__pycache__/
-ppca/P1Mpl/__pycache__/
-ppca/P1Utils/__pycache__/
+palaeopca/__pycache__/
+palaeopca/*.py[cod]
+palaeopca/P1Backend/__pycache__/
+palaeopca/P1Gui/__pycache__/
+palaeopca/P1Mpl/__pycache__/
+palaeopca/P1Utils/__pycache__/
 
 # C extensions
 *.so
@@ -61,4 +61,7 @@ docs/_build/
 target/
 
 # Testing
-ppca/testing/
+palaeopca/testing/
+
+# venv
+palaeopca_venv

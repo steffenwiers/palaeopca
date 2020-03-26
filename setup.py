@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name = "ppca-tool",
+    name = "palaeopca",
     version = "1.0.2",
     author = "Steffen Wiers",
     author_email = "steffen.p.wiers@gmail.com",
     description = "Tool to perform principal component analysis on palaeomagnetic data sets.",
     long_description = long_description,
     long_description_content_type = "text/markdown",
-    url = "https://github.com/steffenwiers/ppca-tool",
+    url = "https://github.com/steffenwiers/palaeopca",
     packages = setuptools.find_packages(),
     classifiers = [
         "Programming Language :: Python :: 3",
