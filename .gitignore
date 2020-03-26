@@ -65,3 +65,6 @@ palaeopca/testing/
 
 # venv
 palaeopca_venv
+
+# vscode
+.vscode
