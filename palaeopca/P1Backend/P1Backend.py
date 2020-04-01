@@ -151,7 +151,7 @@ class P1Backend(object):
 
         return outdata
 
-    def run_mesh(self, window = 3, pbar = None) -> Dict:
+    def run_mesh(self, window = 3, diff = False, pbar = None) -> Dict:
         """
         Run a moving window principal component analysis (PCA) on the dat.
 
@@ -193,12 +193,20 @@ class P1Backend(object):
             # Get corresponding sample data
             A = self.__data.get_data(sample)
 
+            # Get number of steps
+            steps = self.__data.colCount()
+
+            # Calculate difference vector if needed
+            if diff:
+                A = np.diff(A, axis = 0) * -1
+                A = np.append(A, [[np.nan, np.nan, np.nan]], axis = 0)
+
              # Calculate, convert and save NRM convert to provided unit
-            for m in range(self.__data.colCount()):
+            for m in range(steps):
                 outdata["M"][n, m] = np.sqrt(A[m, 0]**2 + A[m, 1]**2 + A[m, 2]**2)
 
             # Iterate through array
-            for index_0 in range(self.__data.colCount() - window + 1):
+            for index_0 in range(steps - window + 1):
                 if n == 0:
                     # Calculate and save window center
                     outdata["Centers"][index_0] = self.__data.get_steps()[index_0:index_0 + window].mean()

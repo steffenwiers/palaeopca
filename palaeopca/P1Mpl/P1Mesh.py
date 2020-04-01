@@ -190,6 +190,8 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
         if loc == "upper center":
             cax[n].tick_params(axis='x', top = True, bottom = False, labeltop = True, labelbottom = False)
             cax[n].xaxis.set_label_position("top")
+        if indices[n] == 1:
+            cax[n].set_xlim([1,0])
 
         # Set x-axis limits
         ax[n].set_xlim([indata["Steps"].min(), indata["Steps"].max()])

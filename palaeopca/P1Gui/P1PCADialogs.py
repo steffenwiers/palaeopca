@@ -1,6 +1,6 @@
 from typing import List
 from PyQt5.QtCore import Qt, QSettings
-from PyQt5.QtWidgets import QDialog, QFormLayout, QLabel, QComboBox, QLineEdit, QDialogButtonBox, QSpinBox
+from PyQt5.QtWidgets import QDialog, QFormLayout, QLabel, QComboBox, QLineEdit, QDialogButtonBox, QSpinBox, QCheckBox
 
 
 class P1SingleIntervalDialog(QDialog):
@@ -81,7 +81,11 @@ class P1MeshDialog(QDialog):
         self.stepSpin = QSpinBox(self)
         self.stepSpin.setMinimum(3)
         self.stepSpin.setMaximum(len(steps))
+
+        self.checkDifference = QCheckBox(self)
+
         self.__layout.addRow(QLabel("Steps:"), self.stepSpin)
+        self.__layout.addRow(QLabel("Difference Vector"), self.checkDifference)
 
         self.buttonBox = QDialogButtonBox(self)
         self.buttonBox.setOrientation(Qt.Horizontal)

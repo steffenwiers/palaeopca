@@ -181,7 +181,7 @@ class P1DataWindow(QWidget):
 
             p = P1Backend()
             p.set_data(self.__data)
-            pca = p.run_mesh(window = dlg.stepSpin.value(), pbar = pbar)
+            pca = p.run_mesh(window = dlg.stepSpin.value(), diff = dlg.checkDifference.isChecked(), pbar = pbar)
             pbar.progress.setValue(100)
             pbar.close()
 
