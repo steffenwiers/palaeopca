@@ -14,25 +14,39 @@ def sequence_plot(outfile: str, indata: np.ndarray, save = False, **kwargs) -> p
     """
     Generates a sequence (downcore) plot.
 
-    Keywords:
-        outfile: full path to file, format will be determined from file extension (str)
-        indata: array of pca results [SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step] (numpy array)
-        save: save the plot (bool, default: False)
-        **kwargs:
-            figure: matplotlib figure instance (default: None)
-            figsize: size of figure in inches (tuple, default: (5, 6))
-            dpi: resolution of figure (float, default: 300)
-            NRM: plot NRM (bool, default: True)
-            NRM_unit: units of NRM (str, default: "")
-            Incl: plot Inclination (bool, default: True)
-            Decl: plot Declination (bool, default: True)
-            MADp: plot MADp (bool, default: True)
-            MADo: plot MADo (bool, default: True)
-            invertY: invert order of samples (bool, default: True)
-            ylabel: label for y-axis (str, default: "")
+    :type outfile: string
+    :type indata: numpy.ndarray
+    :type save: bool
 
-    Returns:
-        matplotlib figure instance.
+    :param outfile: full path to file, format will be determined from file extension
+    :param indata: array of pca results [SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step]
+    :param save: save the plot (default: False)
+    :Keyword Arguments:
+        * *figure* (``matplotlib.Figure``) --
+          matplotlib figure instance (default: None)
+        * *figsize* (``tuple``) --
+          size of figure in inches (default: (5, 6))
+        * *dpi* (``float``) --
+          resolution of figure (default: 300)
+        * *NRM_unit* (``string``) --
+          units of NRM for label (default: "")
+        * *NRM* (``bool``) --
+          plot NRM (default: True)
+        * *Incl* (``bool``) --
+          plot Inclination (default: True)
+        * *Decl* (``bool``) --
+          plot Declination (default: True)
+        * *MADp* (``bool``) --
+          plot MADp (default: True)
+        * *MADo* (``bool``) --
+          plot MADo (default: True)
+        * *invertY* (``bool``) --
+          invert order of samples (default: True)
+        * *ylabel* (``string``) --
+          label for y-axis (default: "")
+
+    :returns: matplotlib figure instance.
+    :rtype: matplotlib.Figure
     """
     # Set style
     plt.style.use("./palaeopca/P1Mpl/styles/sequence.mplstyle")

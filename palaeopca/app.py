@@ -92,7 +92,8 @@ def run():
         s.endGroup()
 
     mw = P1MainWindow.P1MainWindow()
-    mw.show()
+    #mw.show()
+    mw.showMaximized()
     pApp.setActiveWindow(mw)
 
     return pApp.exec_()

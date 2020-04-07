@@ -339,7 +339,7 @@ figure.dpi       : 300        ## figure dots per inch
 ## The figure subplot parameters.  All dimensions are a fraction of the
 figure.subplot.left    : 0.125  ## the left side of the subplots of the figure
 figure.subplot.right   : 0.875    ## the right side of the subplots of the figure
-figure.subplot.bottom  : 0.12   ## the bottom of the subplots of the figure
+figure.subplot.bottom  : 0.13   ## the bottom of the subplots of the figure
 figure.subplot.top     : 0.88   ## the top of the subplots of the figure
 figure.subplot.wspace  : 0.1    ## the amount of width reserved for space between subplots,
                                  ## expressed as a fraction of the average axis width

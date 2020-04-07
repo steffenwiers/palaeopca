@@ -255,33 +255,35 @@ class P1MeshExport(QDialog):
         self.setLayout(self.__layout)
 
         self.__fileLabel = QLabel("Output file:")
+        __fmt = plt.gcf().canvas.get_supported_filetypes()
         __filter = ["{0} file (*.{0})".format(key) for key in plt.gcf().canvas.get_supported_filetypes()]
         __filter = ";;".join(__filter)
         __filter = "(" + __filter + ")"
-        self.pathPicker = P1PathPicker("save", __filter, "Choose output file")
+        __sFilter = "{0} (*.{1})".format(__fmt[s.value("Mesh/fmt")], s.value("Mesh/fmt"))
+        self.pathPicker = P1PathPicker("save", __filter, __sFilter, "Choose output file")
 
         # Figure box widgets
-        self.paramBox = QGroupBox("Figure")
-        self.__paramLayout = QGridLayout(self.paramBox)
+        self.figureBox = QGroupBox("Figure")
+        self.__figureLayout = QGridLayout(self.figureBox)
 
         size = literal_eval(s.value("Mesh/Size", "(5, 5)"))
-        self.__figureWLabel = QLabel("Figure width")
+        self.__figureWLabel = QLabel("Figure width (in)")
         self.figure_width = QLineEdit(str(size[0]))
 
         self.__figureHLabel = QLabel("Figure height (in)")
         self.figure_height = QLineEdit(str(size[1]))
 
-        self.__figureDPILabel = QLabel("Figure width (in)")
+        self.__figureDPILabel = QLabel("Figure dpi")
         self.figure_dpi = QLineEdit(str(s.value("Mesh/dpi", "300")))
 
-        self.__paramLayout.addWidget(self.__figureWLabel, 0, 0)
-        self.__paramLayout.addWidget(self.figure_width, 0, 1)
+        self.__figureLayout.addWidget(self.__figureWLabel, 0, 0)
+        self.__figureLayout.addWidget(self.figure_width, 0, 1)
 
-        self.__paramLayout.addWidget(self.__figureDPILabel, 0, 2)
-        self.__paramLayout.addWidget(self.figure_dpi, 0, 3)
+        self.__figureLayout.addWidget(self.__figureDPILabel, 0, 2)
+        self.__figureLayout.addWidget(self.figure_dpi, 0, 3)
 
-        self.__paramLayout.addWidget(self.__figureHLabel, 1, 0)
-        self.__paramLayout.addWidget(self.figure_height, 1, 1)
+        self.__figureLayout.addWidget(self.__figureHLabel, 1, 0)
+        self.__figureLayout.addWidget(self.figure_height, 1, 1)
 
         # Parameter box widgets
         self.paramBox = QGroupBox("Parameters")
@@ -319,7 +321,7 @@ class P1MeshExport(QDialog):
         self.__layout.addWidget(self.__fileLabel, 0, 0)
         self.__layout.addWidget(self.pathPicker, 0, 1)
         
-        self.__layout.addWidget(self.paramBox, 1, 0, 1, 2)
+        self.__layout.addWidget(self.figureBox, 1, 0, 1, 2)
         self.__layout.addWidget(self.paramBox, 2, 0, 1, 2)
 
         self.__layout.addWidget(self.buttonBox, 3, 0, 1, 2)

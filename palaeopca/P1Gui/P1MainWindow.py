@@ -4,6 +4,7 @@ import shutil
 import re
 import configparser
 from ast import literal_eval
+import webbrowser
 
 ## Qt
 from PyQt5.QtCore import \
@@ -37,6 +38,7 @@ from PyQt5.QtGui import QIcon
 import palaeopca
 from palaeopca.P1Gui.P1DataWindow import P1DataWindow
 from palaeopca.P1Backend.P1DataObject import P1DataObject
+from palaeopca.P1Gui.P1AboutDialog import P1AboutDialog
 
 def _icon(name, style = ""):
     icon = palaeopca.P1Utils.P1PixmapCache.getIcon(name, style)
@@ -98,6 +100,15 @@ class P1MainWindow(QMainWindow):
         #self.action_export_seq.setIcon(_icon("SP_DialogSaveButton"))
         #self.action_export_seq.setText("Export sequence plot")
 
+        # Help actions
+        self.action_docs = QAction(self)
+        self.action_docs.setIcon(_icon("book", "solid"))
+        self.action_docs.setText("Documentation")
+
+        self.action_about = QAction(self)
+        #self.action_about.setIcon(_icon())
+        self.action_about.setText("About")
+
     def __setup_menus(self):
         menubar = self.menuBar()
 
@@ -117,16 +128,28 @@ class P1MainWindow(QMainWindow):
         #menuExport.addAction(self.action_export_zijder)
         #menuExport.addAction(self.action_export_seq)
 
+        # Help menu
+        menuHelp = QMenu("Help", menubar)
+        menuHelp.addAction(self.action_docs)
+        menuHelp.addAction(self.action_about)
+
         # Setup
         menubar.addMenu(menuFile)
         menubar.addMenu(menuImport)
         #menubar.addMenu(menuExport)
+        menubar.addMenu(menuHelp)
+
+        #
 
     def __connect_gui(self):
         self.actionSettings.triggered.connect(self.on_settings_triggered)
         self.actionExit.triggered.connect(self.close)
+
         self.action_import.triggered.connect(self.on_import_triggered)
         self.action_quick_import.triggered.connect(self.on_quick_import_triggered)
+
+        self.action_docs.triggered.connect(self.on_docs_triggered)
+        self.action_about.triggered.connect(self.on_about_triggered)
     
     @pyqtSlot()
     def on_settings_triggered(self):
@@ -180,6 +203,25 @@ class P1MainWindow(QMainWindow):
         data.set_units(s.value("Units/Input", "emu"))
 
         self.open_data_window(infile, data)
+
+    @pyqtSlot()
+    def on_docs_triggered(self):
+        url = palaeopca.basedir.replace("\\", "/") + "/../docs/index.html"
+
+        msgBox = QMessageBox(self)
+        msgBox.setWindowTitle("Open documentation")
+        msgBox.setText("Documentation will open in external browser window.")
+        msgBox.setInformativeText("URL: {0}".format(url))
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        msgBox.setDefaultButton(QMessageBox.Ok)
+        
+        if msgBox.exec() == QMessageBox.Ok:
+            webbrowser.get('windows-default').open(url, new=2)
+
+    @pyqtSlot()
+    def on_about_triggered(self):
+        dialog = P1AboutDialog(self)
+        dialog.show()
 
     def open_data_window(self, infile, data):
         subwindow = QMdiSubWindow(self.centralWidget())

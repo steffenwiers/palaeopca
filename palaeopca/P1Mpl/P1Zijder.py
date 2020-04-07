@@ -15,26 +15,41 @@ if "PyQt5" in sys.modules:
 from palaeopca.P1Utils.P1PCALine import PCALine
 from palaeopca.P1Backend.P1DataObject import P1DataObject
 
-def zijder_save(outdir: str, indata: P1DataObject, xh: str = "N", xv: str = "N", y: str = "W", z: str = "Up", pbar = None, **kwargs):
+def zijder_save(outdir: str, indata: P1DataObject, xh: str="N", xv: str="N", y: str="W", z: str="Up", pbar=None, **kwargs):
     """
     Warpper function to loop through data, generates and saves zijderveld plots
 
-    Keywords:
-        outdir: full path to output directory, will be created if non existant
-        indata: P1DataObject with all sample data
-        xh: component to be plotted on x-axis, horizontal projection (N, S, E or W, default: N)
-        xv: component to be plotted on x-axis, vertical projection (N, S, E or W, default: N)
-        y: component to be plotted on y-axis, horizontal projection (N, S, E or W, default: W)
-        z: component to be plotted on y-axis, vertical projection (Up or Down, default: Up)
-        pbar: progress bar, only used in gui
-        **kwargs:
-            figsize: size of figure in inches (tuple, default: (5, 5))
-            fmt: figure format (str, default: png)
-            dpi: resolution of figure (float, default: 300)
-            pca_results: array of pca results [SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step] (numpy array, default: None)
-            pca_anno: annotate plot with pca results, Inc, Dec, MADp and MADo (bool, default: False)
-            pca_points: mark points used in pca (bool, default: False)
-            pca_lines: plot largest Eigenvector of pca (bool, default: False)
+    :type outdir: string
+    :type indata: P1DataObject
+    :type xh: string
+    :type xv: string
+    :type y: string
+    :type z: string
+    :type pbar: P1Progressbar
+    
+    :param outdir: full path to output directory, will be created if non existant
+    :param indata: P1DataObject with all sample data
+    :param xh: component to be plotted on x-axis, horizontal projection (N, S, E or W, default: N)
+    :param xv: component to be plotted on x-axis, vertical projection (N, S, E or W, default: N)
+    :param y: component to be plotted on y-axis, horizontal projection (N, S, E or W, default: W)
+    :param z: component to be plotted on y-axis, vertical projection (Up or Down, default: Up)
+    :param pbar: progress bar instance, only used in gui mode
+
+    :Keyword Arguments:
+        * *figsize* (``tuple``) --
+          size of figure in inches (default: (5, 5))
+        * *fmt* (``string``) --
+          figure format (default: png)
+        * *dpi* (``float``) --
+          resolution of figure (default: 300)
+        * *pca_results* (``numpy.ndarray``) --
+          array of pca results [SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step] (default: None)
+        * *pca_anno* (``bool``) --
+          annotate plot with pca results, Inc, Dec, MADp and MADo (default: False)
+        * *pca_points* (``bool``) --
+          mark points used in pca (default: False)
+        * *pca_lines* (``bool``) --
+          plot largest Eigenvector of pca (default: False)
     """
     # Check dir and create if necessary
     if not os.path.exists(outdir):
@@ -83,31 +98,46 @@ def zijder_save(outdir: str, indata: P1DataObject, xh: str = "N", xv: str = "N",
                 pbar.progress.setValue(int(new_value))
             QApplication.processEvents()
 
-def zijder_plot(sample: str, indata: np.ndarray, xh: str = "N", xv: str = "N", y: str = "W", z: str = "Up", **kwargs) -> plt.figure:
+def zijder_plot(sample: str, indata: np.ndarray, xh: str="N", xv: str="N", y: str="W", z: str="Up", **kwargs) -> plt.figure:
     """
     Generates and a zijderveld plot of provided data.
 
-    Keywords:
-        indata: numpy array of (x, y, z) data vectors
-        xh: component to be plotted on x-axis, horizontal projection (N, S, E or W, default: N)
-        xv: component to be plotted on x-axis, vertical projection (N, S, E or W, default: N)
-        y: component to be plotted on y-axis, horizontal projection (N, S, E or W, default: W)
-        z: component to be plotted on y-axis, vertical projection (Up or Down, default: Up)
-        **kwargs:
-            figure: matplotlib figure instance (default: None)
-            figsize: size of figure in inches (tuple, default: (5, 5))
-            ret: return "figure" or "axis" (str, default: figure)
-            dpi: resolution of figure (float, default: 300)
-            fmt: figure format (str, default: png)
-            units: units of x, y, z values (str, default: "")
-            pca_results: array of pca results [SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step] (numpy array, default: None)
-            pca_steps: list of all demagnetization steps (default: [])
-            pca_anno: annotate plot with pca results, Inc, Dec, MADp, MADo (bool, default: False)
-            pca_points: mark points used in pca (bool, default: False)
-            pca_lines: plot largest Eigenvector of pca (bool, default: False)
+    :type indata: numpy.ndarray
+    :type xh: string
+    :type xv: string
+    :type y: string
+    :type z: string
+    
+    :param indata: numpy array of (x, y, z) data vectors
+    :param xh: component to be plotted on x-axis, horizontal projection (N, S, E or W, default: N)
+    :param xv: component to be plotted on x-axis, vertical projection (N, S, E or W, default: N)
+    :param y: component to be plotted on y-axis, horizontal projection (N, S, E or W, default: W)
+    :param z: component to be plotted on y-axis, vertical projection (Up or Down, default: Up)
 
-    Returns:
-        matplotlib figure or axis instance.
+    :Keyword Arguments:
+        * *figure* (``matplotlib.Figure``) --
+          matplotlib figure instance (default: None)
+        * *figsize* (``tuple``) --
+          size of figure in inches (default: (5, 5))
+        * *fmt* (``string``) --
+          figure format (default: png)
+        * *dpi* (``float``) --
+          resolution of figure (default: 300)
+        * *units* (``string``) --
+          units of x, y, z values for labels (default: "")
+        * *pca_results* (``numpy.ndarray``) --
+          array of pca results [SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step] (default: None)
+        * *pca_steps* (``list``) --
+          list of all demagnetization steps (default: [])
+        * *pca_anno* (``bool``) --
+          annotate plot with pca results, Inc, Dec, MADp and MADo (default: False)
+        * *pca_points* (``bool``) --
+          mark points used in pca (default: False)
+        * *pca_lines* (``bool``) --
+          plot largest Eigenvector of pca (default: False)
+
+    :returns: matplotlib figure or axis instance.
+    :rtype: matplotlib.Figure or matplotlib.Axis
     """
     # Set style
     plt.style.use("./palaeopca/P1Mpl/styles/zijder.mplstyle")
@@ -117,8 +147,6 @@ def zijder_plot(sample: str, indata: np.ndarray, xh: str = "N", xv: str = "N", y
         kwargs["figure"] = None
     if "figsize" not in kwargs:
         kwargs["figsize"] = (5, 5)
-    if "ret" not in kwargs:
-        kwargs["ret"] = "figure"
     if "dpi" not in kwargs:
         kwargs["dpi"] = 300
     if "fmt" not in kwargs:
@@ -205,23 +233,48 @@ def zijder_plot(sample: str, indata: np.ndarray, xh: str = "N", xv: str = "N", y
         incRad = np.radians(kwargs["pca_results"][2])
         decRad = np.radians(kwargs["pca_results"][3])
 
-        # Calculate line angle for horizontal projection
-        angleRad = np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(decRad)))
-        if xv == "S": angleRad = -1 * angleRad
-        if xv == "E": angleRad = -1 * angleRad# + np.radians(45) ????
-        # TODO
-        # get right orientation for E and W projections
-        if z == "Up": angleRad = -1 * angleRad
+        # Generate dictionary with all possible projections
+        direction_mapper = {
+            "NN": np.radians(45),
+            "NE": (np.pi / 2 + (-1) * decRad),
+            "NS": -np.radians(45),
+            "NW": -1 * (np.pi / 2 + (-1) * decRad),
 
-        # Calculate vertical projection line parameters        
-        x_v, y_v = PCALine(data[xv][ind], data[z][ind], angleRad, 1.5)
+            "EN": decRad,#(np.pi / 2 - decRad),
+            "EE": np.radians(45),
+            "ES": -decRad,
+            "EW": -np.radians(45),
 
-        # Calculate line angle for vertical projection
-        angleRad = -1 * (np.pi / 2 + (-1) * np.radians(kwargs["pca_results"][3]))
-        if y == "E": angleRad = -1 * angleRad
+            "SN": -np.radians(45),
+            "SE": -1 * (np.pi / 2 + (-1) * decRad),
+            "SS": np.radians(45),
+            "SW": (np.pi / 2 + (-1) * decRad),
 
-        # Calculate vertical projection line parameters
+            "WN": -decRad,
+            "WE": -np.radians(45),
+            "WS": decRad,
+            "WW": np.radians(45),
+            
+            "NUp": -1 * (np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(decRad)))),
+            "NDown": np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(decRad))),
+
+            "EUp": -1 * (np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(np.pi/2-decRad)))),
+            "EDown": (np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(np.pi/2-decRad)))),
+
+            "SUp": np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(decRad))),
+            "SDown": -1 * (np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(decRad)))),
+
+            "WUp": (np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(np.pi/2-decRad)))),
+            "WDown": -1 * (np.pi / 2 + np.arctan(np.sin(incRad) / (np.cos(incRad) * np.cos(np.pi/2-decRad)))),
+        }
+
+        # Get line angle for horizontal projection & calculate horizontal projection line parameters
+        angleRad = direction_mapper["{0}{1}".format(xh, y)]
         x_h, y_h = PCALine(data[xh][ind], data[y][ind], angleRad, 1.5)
+
+        # Get line angle for horizontal projection & calculate horizontal projection line parameters
+        angleRad = direction_mapper["{0}{1}".format(xv, z)]
+        x_v, y_v = PCALine(data[xv][ind], data[z][ind], angleRad, 1.5)
 
         # Draw lines
         if not redraw:
@@ -272,23 +325,6 @@ def zijder_plot(sample: str, indata: np.ndarray, xh: str = "N", xv: str = "N", y
         hdl.append(mado_patch)
         
     # Add Legend
-    legend = ax.legend(handles = hdl, loc = "lower left", bbox_to_anchor = (1.02, 0))
+    ax.legend(handles = hdl, loc = "lower left", bbox_to_anchor = (1.02, 0))
 
-    if kwargs["ret"] == "figure":
-        return fig
-    else:
-        return ax
-
-"""def add_legend_entry(legend, patch):
-    ax = legend.axes
-
-    handles, labels = ax.get_legend_handles_labels()
-    handles.append(patch)
-    labels.append(patch.get_label())
-
-    legend._legend_box = None
-    legend._init_legend_box(handles, labels)
-    legend._set_loc(legend._loc)
-    legend.set_title(legend.get_title().get_text())
-
-    return legend"""
+    return fig

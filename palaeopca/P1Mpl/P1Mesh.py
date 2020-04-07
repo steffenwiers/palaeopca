@@ -14,36 +14,56 @@ from palaeopca.P1Backend.P1DataObject import P1DataObject
 
 def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
     """
-    Generates a sequence (downcore) mesh plot.
+    | Generates a sequence (downcore) mesh plot.
 
-    Keywords:
-        outfile: full path to file, format will be determined from file extension (str)
-        indata: 
-            Dictionary with the numpy arrays of the following parameters:
-                Samples: vector of SampleID/Depth.
-                Centers: vector of window centers.
-                Steps: vector of all steps.
-                M: Magnetization matrix with observations in rows, windows in columns.
-                Inclination: Inclination matrix with observations in rows, windows in columns.
-                Declination: Declination matrix with observations in rows, windows in columns.
-                MADp: medium angular deviation, prolate matrix with observations in rows, windows in columns.
-                MADo: medium angular deviation, oblate matrix with observations in rows, windows in columns.
-        save: save the plot (bool, default: False)
-        **kwargs:
-            figure: matplotlib figure instance (default: None)
-            figsize: size of figure in inches (tuple, default: (5, 6))
-            dpi: resolution of figure (float, default: 300)
-            NRM: plot NRM (bool, default: True)
-            Incl: plot Inclination (bool, default: True)
-            Decl: plot Declination (bool, default: True)
-            MADp: plot MADp (bool, default: True)
-            MADo: plot MADo (bool, default: True)
-            cmap: str or list of matplotlib colormap names (str or list, default: ["tab20c", "PRGn", "PRGn", "hot", "hot"])
-            invertY: invert order of samples (bool, default: True)
-            ylabel: label for y-axis (str, default: "")
+    :type outfile: string
+    :type indata: dictionary
+    :type save: bool
 
-    Returns:
-        matplotlib figure instance.
+    :param outfile: full path to file, format will be determined from file extension
+    :param indata: see below
+    :param save: save the plot (default: False)
+    :Keyword Arguments:
+        * *figure* (``matplotlib.Figure``) --
+          matplotlib figure instance (default: None)
+        * *figsize* (``tuple``) --
+          size of figure in inches (default: (5, 6))
+        * *dpi* (``float``) --
+          resolution of figure (default: 300)
+        * *NRM* (``bool``) --
+          plot NRM (default: True)
+        * *Incl* (``bool``) --
+          plot Inclination (default: True)
+        * *Decl* (``bool``) --
+          plot Declination (default: True)
+        * *MADp* (``bool``) --
+          plot MADp (default: True)
+        * *MADo* (``bool``) --
+          plot MADo (default: True)
+        * *cmap* (``string or list``) --
+          matplotlib colormap names (default: ["tab20c", "PRGn", "PRGn", "hot", "hot"])
+        * *invertY* (``bool``) --
+          invert order of samples (default: True)
+        * *ylabel* (``string``) --
+          label for y-axis (default: "")
+
+    :returns: matplotlib figure instance.
+    :rtype: matplotlib.Figure
+
+
+    Notes
+    -----
+
+    Input dictionary with the following keys:
+
+    * Samples: vector of SampleID/Depth.
+    * Centers: vector of window centers.
+    * Steps: vector of all steps.
+    * M: Magnetization matrix with observations in rows, windows in columns.
+    * Inclination: Inclination matrix with observations in rows, windows in columns.
+    * Declination: Declination matrix with observations in rows, windows in columns.
+    * MADp: medium angular deviation, prolate matrix with observations in rows, windows in columns.
+    * MADo: medium angular deviation, oblate matrix with observations in rows, windows in columns.
     """
     # Set style
     plt.style.use("./palaeopca/P1Mpl/styles/mesh.mplstyle")
@@ -110,7 +130,7 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
         vmax = None
         if indices[n] == 1: # NRM
             x = indata["Steps"]
-            c = indata["M"] / np.amax(indata["M"], axis = 0)
+            c = indata["M"] #/ np.amax(indata["M"], axis = 0)
             cmap = kwargs["cmap"].pop(0)
             vmin = 0
         elif indices[n] == 2: # Inclination

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>palaeopca.P1Backend.P1Backend module &#8212; palaeopca  documentation</title>
+    <link rel="stylesheet" href="_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="palaeopca.P1Backend.P1DataObject module" href="palaeopca.P1Backend.P1DataObject.html" />
+    <link rel="prev" title="palaeopca.P1Backend package" href="palaeopca.P1Backend.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="_static/solarized-dark.css" rel="stylesheet">
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Backend.P1DataObject.html" title="palaeopca.P1Backend.P1DataObject module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Backend.html" title="palaeopca.P1Backend package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">palaeopca  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="palaeopca.html" >palaeopca api</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="palaeopca.P1Backend.html" accesskey="U">palaeopca.P1Backend package</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">palaeopca.P1Backend.P1Backend module</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="palaeopca.P1Backend.html"
+                        title="previous chapter">palaeopca.P1Backend package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="palaeopca.P1Backend.P1DataObject.html"
+                        title="next chapter">palaeopca.P1Backend.P1DataObject module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/palaeopca.P1Backend.P1Backend.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-palaeopca.P1Backend.P1Backend">
+<span id="palaeopca-p1backend-p1backend-module"></span><h1>palaeopca.P1Backend.P1Backend module<a class="headerlink" href="#module-palaeopca.P1Backend.P1Backend" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend">
+<em class="property">class </em><code class="sig-prename descclassname">palaeopca.P1Backend.P1Backend.</code><code class="sig-name descname">P1Backend</code><a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is the main backend of palaeopca.</p>
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend.center">
+<code class="sig-name descname">center</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">A</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend.center" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to center data according to zi = (xi - X)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> (<em>numpy.ndarray</em>) – data matrix with variables (x, y, z) in columns and observations in rows</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>centered data matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend.get_conversion_factor">
+<code class="sig-name descname">get_conversion_factor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">units_in</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">units_out</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend.get_conversion_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates unit conversion factor based on input and output units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>units_in</strong> (<em>string</em>) – input units (emu, Am2, A/m)</p></li>
+<li><p><strong>units_out</strong> (<em>string</em>) – output units (emu, Am2, A/m)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>conversion factor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="palaeopca.P1Backend.P1DataObject.html#palaeopca.P1Backend.P1DataObject.P1DataObject" title="palaeopca.P1Backend.P1DataObject.P1DataObject">palaeopca.P1Backend.P1DataObject.P1DataObject</a><a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the underlying data object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="palaeopca.P1Backend.P1DataObject.html#palaeopca.P1Backend.P1DataObject.P1DataObject" title="palaeopca.P1Backend.P1DataObject.P1DataObject">P1DataObject</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend.load_file">
+<code class="sig-name descname">load_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">infile</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">sep</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">skip_header</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">volume</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">10.0</span></em>, <em class="sig-param"><span class="n">units</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'emu'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend.load_file" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Loads a datafile of known format.</div>
+<div class="line">Format:</div>
+<div class="line">Columns: SampleID/Depth, AF (mT)/Temp. (K or °C), x (emu or Am2), y (emu or Am2), z (emu or Am2)</div>
+<div class="line">Rows: Observations</div>
+<div class="line">File may contain several samples, order first by sample, second by AF in ascending order. All samples need to have the same number of AF steps</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>infile</strong> (<em>string</em>) – full path to input file</p></li>
+<li><p><strong>sep</strong> (<em>string</em>) – file delimiter</p></li>
+<li><p><strong>skip_header</strong> (<em>integer</em>) – header lines to skip</p></li>
+<li><p><strong>volume</strong> (<em>float</em>) – sample volume in g/cc (default: 10.0)</p></li>
+<li><p><strong>units</strong> (<em>string</em>) – units of input data (default: emu)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend.ppca">
+<code class="sig-name descname">ppca</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indata</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">anchor</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">vec</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend.ppca" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Function to perform a principal component analysis (PCA) on set of (x, y, z) vectors by singular value decomposition (SVD)</div>
+<div class="line"><br /></div>
+<div class="line">Dictionary keys correspond to the following parameters:</div>
+<div class="line-block">
+<div class="line">Inclination: Inclination.</div>
+<div class="line">Declination: Declination.</div>
+<div class="line">MADp: medium angular deviation, prolate.</div>
+<div class="line">MADo: medium angular deviation, oblate.</div>
+<div class="line">Evals: Vector of singular values in decending order, corresponds to Eigenvalues of data covariance matrix.</div>
+<div class="line">Evecs: Matrix of right singular vectors, corresponds to Eigenvectors of data covariance matrix.</div>
+<div class="line">Variance_Explained: percentage of variance explained by the individual components.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indata</strong> (<em>numpy.ndarray</em>) – data matrix with variables (x, y, z) in columns and observations in rows</p></li>
+<li><p><strong>anchor</strong> (<em>bool</em>) – anchor pca at origin</p></li>
+<li><p><strong>vec</strong> (<em>integer</em>) – eigenvector to return results from (default: 0 [largest])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary with the following keys: Inclination, Declination, MADp, MADo, Evals, Evecs, Variance_Explained</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend.run_best_fit">
+<code class="sig-name descname">run_best_fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">min_steps</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">3</span></em>, <em class="sig-param"><span class="n">NRM_unit</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'A/m'</span></em>, <em class="sig-param"><span class="n">anchor</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">pbar</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend.run_best_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a principal component analysis (PCA) on the data minimizing the MADp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min_steps</strong> (<em>integer</em>) – minimum number of steps to be used (default: 3)</p></li>
+<li><p><strong>NRM_unit</strong> (<em>string</em>) – units for NRM (default = A/m)</p></li>
+<li><p><strong>anchor</strong> (<em>bool</em>) – anchor pca at origin</p></li>
+<li><p><strong>pbar</strong> (<em>P1ProgressBar</em>) – progress bar instance, only used in gui mode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>array with the following columns: SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend.run_mesh">
+<code class="sig-name descname">run_mesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">window</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">3</span></em>, <em class="sig-param"><span class="n">diff</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">anchor</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">pbar</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend.run_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Run a moving window principal component analysis (PCA) on the data.</div>
+<div class="line"><br /></div>
+<div class="line">Dictionary keys correspond to the following parameters:</div>
+<div class="line-block">
+<div class="line">Samples: vector of SampleID/Depth.</div>
+<div class="line">Centers: vector of window centers.</div>
+<div class="line">Steps: vector of all steps.</div>
+<div class="line">M: Magnetization matrix with observations in rows, windows in columns.</div>
+<div class="line">Inclination: Inclination matrix with observations in rows, windows in columns.</div>
+<div class="line">Declination: Declination matrix with observations in rows, windows in columns.</div>
+<div class="line">MADp: medium angular deviation, prolate matrix with observations in rows, windows in columns.</div>
+<div class="line">MADo: medium angular deviation, oblate matrix with observations in rows, windows in columns.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<em>integer</em>) – interval length for pca</p></li>
+<li><p><strong>diff</strong> (<em>bool</em>) – use difference vector (true) or original data (false)</p></li>
+<li><p><strong>anchor</strong> (<em>bool</em>) – anchor pca at origin</p></li>
+<li><p><strong>pbar</strong> (<em>P1Progressbar</em>) – progress bar instance, only used in gui mode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary with the following keys: Samples, Centers, Steps, M, Inclination, Declination, MADp, MADo</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend.run_single_interval">
+<code class="sig-name descname">run_single_interval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">min_step</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">max_step</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">100.0</span></em>, <em class="sig-param"><span class="n">NRM_unit</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'A/m'</span></em>, <em class="sig-param"><span class="n">anchor</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">pbar</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend.run_single_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a principal component analysis (PCA) on the data in the given interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min_step</strong> (<em>float</em>) – first step to be used, in step units (e.g., mT)</p></li>
+<li><p><strong>max_step</strong> (<em>float</em>) – last step to be used, in step units (e.g., mT)</p></li>
+<li><p><strong>NRM_unit</strong> (<em>string</em>) – units for NRM (str, default = A/m)</p></li>
+<li><p><strong>anchor</strong> (<em>bool</em>) – anchor pca at origin</p></li>
+<li><p><strong>pbar</strong> (<em>P1ProgressBar</em>) – progress bar instance, only used in gui mode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>array with the following columns: SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1Backend.P1Backend.set_data">
+<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indata</span><span class="p">:</span> <span class="n"><a class="reference internal" href="palaeopca.P1Backend.P1DataObject.html#palaeopca.P1Backend.P1DataObject.P1DataObject" title="palaeopca.P1Backend.P1DataObject.P1DataObject">palaeopca.P1Backend.P1DataObject.P1DataObject</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaeopca.P1Backend.P1Backend.P1Backend.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the data object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indata</strong> (<a class="reference internal" href="palaeopca.P1Backend.P1DataObject.html#palaeopca.P1Backend.P1DataObject.P1DataObject" title="palaeopca.P1Backend.P1DataObject.P1DataObject"><em>P1DataObject</em></a>) – data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Single interval</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">palaeopca.P1Backend.P1Backend</span> <span class="kn">import</span> <span class="n">P1Backend</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;1,0,1,1,1</span><span class="se">\n</span><span class="s2">1,50,0.5,0.5,0.5</span><span class="se">\n</span><span class="s2">2,0,2,2,2</span><span class="se">\n</span><span class="s2">2,50,1,1,1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">P1Backend</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">run_single_interval</span><span class="p">()</span>
+<span class="go">array([[  1.        , 173.20508076,  35.26438968, 225.        ,</span>
+<span class="go">          0.        ,   0.        ,   0.        , 100.        ],</span>
+<span class="go">       [  2.        , 346.41016151,  35.26438968, 225.        ,</span>
+<span class="go">          0.        ,   0.        ,   0.        , 100.        ]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Backend.P1DataObject.html" title="palaeopca.P1Backend.P1DataObject module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Backend.html" title="palaeopca.P1Backend package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">palaeopca  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="palaeopca.html" >palaeopca api</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="palaeopca.P1Backend.html" >palaeopca.P1Backend package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2020, Steffen Wiers.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.0.0.Theme is <a href="http://github.com/vimalkvn/solar-theme">Solar</a>
+    </div>
+  </body>
+</html>

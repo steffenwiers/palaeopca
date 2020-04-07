@@ -10,5 +10,4 @@ import sys
 import palaeopca.palaeopca
 
 if __name__ == '__main__':
-    print("Starting main")
     sys.exit(palaeopca.palaeopca.main())

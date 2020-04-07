@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>palaeopca.P1Backend.P1DataObject module &#8212; palaeopca  documentation</title>
+    <link rel="stylesheet" href="_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="palaeopca.P1Mpl package" href="palaeopca.P1Mpl.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="palaeopca.P1Backend.P1Backend.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="_static/solarized-dark.css" rel="stylesheet">
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Mpl.html" title="palaeopca.P1Mpl package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Backend.P1Backend.html" title="&lt;no title&gt;"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">palaeopca  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="palaeopca.html" >palaeopca api</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="palaeopca.P1Backend.html" accesskey="U">palaeopca.P1Backend package</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">palaeopca.P1Backend.P1DataObject module</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="palaeopca.P1Backend.P1Backend.html"
+                        title="previous chapter">&lt;no title&gt;</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="palaeopca.P1Mpl.html"
+                        title="next chapter">palaeopca.P1Mpl package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/palaeopca.P1Backend.P1DataObject.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-palaeopca.P1Backend.P1DataObject">
+<span id="palaeopca-p1backend-p1dataobject-module"></span><h1>palaeopca.P1Backend.P1DataObject module<a class="headerlink" href="#module-palaeopca.P1Backend.P1DataObject" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject">
+<em class="property">class </em><code class="sig-prename descclassname">palaeopca.P1Backend.P1DataObject.</code><code class="sig-name descname">P1DataObject</code><a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Container class for 3-dimensional vector data.</p>
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.colCount">
+<code class="sig-name descname">colCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.colCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns AF/Temp step count</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of steps</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sample</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns data for specified sample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sample</strong> (<em>string</em><em> or </em><em>integer</em><em> or </em><em>float</em>) – sample id</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>array with data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.get_raw_data">
+<code class="sig-name descname">get_raw_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.get_raw_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the unsctructured raw data as was read from the input file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>raw data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.get_samples">
+<code class="sig-name descname">get_samples</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.get_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all samples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sample list</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.get_steps">
+<code class="sig-name descname">get_steps</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.get_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns demagnetization steps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of all AF/Temp steps</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.get_units">
+<code class="sig-name descname">get_units</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.get_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns data units</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.get_volume">
+<code class="sig-name descname">get_volume</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.get_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns sample volume</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.load_data">
+<code class="sig-name descname">load_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">infile</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">sep</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">skip_header</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a data file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>infile</strong> (<em>string</em>) – full path to input file</p></li>
+<li><p><strong>sep</strong> (<em>string</em>) – file delimiter</p></li>
+<li><p><strong>skip_header</strong> (<em>integer</em>) – header lines to skip</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.rowCount">
+<code class="sig-name descname">rowCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.rowCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns sample count</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of samples</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.set_units">
+<code class="sig-name descname">set_units</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">units</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.set_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set input data units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>units</strong> (<em>string</em>) – input units (emu, Am2, A/m)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="palaeopca.P1Backend.P1DataObject.P1DataObject.set_volume">
+<code class="sig-name descname">set_volume</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">volume</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">10.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaeopca.P1Backend.P1DataObject.P1DataObject.set_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set sample volume.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>volume</strong> (<em>float</em>) – sample volume in g/cc</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">palaeopca.P1Backend.P1DataObject</span> <span class="kn">import</span> <span class="n">P1DataObject</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;1,0,1,1,1</span><span class="se">\n</span><span class="s2">1,50,0.5,0.5,0.5</span><span class="se">\n</span><span class="s2">2,0,2,2,2</span><span class="se">\n</span><span class="s2">2,50,1,1,1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">P1DataObject</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">get_samples</span><span class="p">()</span>
+<span class="go">[1., 2.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">array([[2., 2., 2.],</span>
+<span class="go">       [1., 1., 1.]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Mpl.html" title="palaeopca.P1Mpl package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Backend.P1Backend.html" title="&lt;no title&gt;"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">palaeopca  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="palaeopca.html" >palaeopca api</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="palaeopca.P1Backend.html" >palaeopca.P1Backend package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2020, Steffen Wiers.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.0.0.Theme is <a href="http://github.com/vimalkvn/solar-theme">Solar</a>
+    </div>
+  </body>
+</html>

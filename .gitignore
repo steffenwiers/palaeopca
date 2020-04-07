@@ -61,10 +61,13 @@ docs/_build/
 target/
 
 # Testing
-palaeopca/testing/
+testing/
 
 # venv
-palaeopca_venv
+palaeopca_venv/
 
 # vscode
-.vscode
+.vscode/
+
+# sphinx build dir
+.sphinx/

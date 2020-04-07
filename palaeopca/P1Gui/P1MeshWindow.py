@@ -219,9 +219,256 @@ class P1MeshWindow(QWidget):
                     
                     workbook.close()
 
+            # Inclination
+            if dlg.incCheck.isChecked():
+                fileout = os.path.join(dlg.pathPicker.getPath(), "Inclination_Mesh_{0}.{1}".format(len(self.__data["Centers"]), fmt))
+                if fmt == "csv":
+                    # Make header
+                    if dlg.stepCheck.isChecked():
+                        header = "," + ",".join([str(x) for x in self.__data["Centers"]])
+                    else:
+                        header = ""
+                    
+                    # Prepare data and add vectors if desired
+                    data = self.__data["Inclination"]
+                    if dlg.sampleCheck.isChecked():
+                        data = np.insert(data, 0, values = self.__data["Samples"], axis = 1)
+
+                    try:                    
+                        np.savetxt(fileout, data, delimiter = ",", header = header)
+                    except PermissionError:
+                        err = QMessageBox(self)
+                        err.setText("Cannot open file for writing.")
+                        err.setInformativeText("Make sure the file is not locked/opened by another program.")
+                        err.setDetailedText("Affected file: {0}".format(fileout))
+                        err.exec()
+                        return
+
+                else:
+                    try:
+                        import xlsxwriter
+                    except ModuleNotFoundError:
+                        err = QMessageBox(self)
+                        err.setText("Cannot find xlsxwriter module.")
+                        err.setInformativeText("Install xlsxwriter module to enable xls(x) export.")
+                        err.setDetailedText("Try installing xlsxwriter via pip from the command line: pip install xlsxwriter")
+                        err.exec()
+                        return
+                    
+                    workbook = xlsxwriter.Workbook(fileout)
+                    worksheet = workbook.add_worksheet()
+
+                    col = 0
+                    if dlg.sampleCheck.isChecked():
+                        worksheet.write(0, col, "SampleID/Depth")
+                        for row, s in enumerate(self.__data["Samples"]):
+                            worksheet.write(row + 1, col, s)
+                        col += 1
+                    
+                    for c, center in enumerate(self.__data["Centers"]):
+                        worksheet.write(0, c + col, str(center))
+
+                    row = 1
+                    for i in self.__data["Inclination"]:
+                        for c in range(col, len(i) + col):
+                            worksheet.write(row, c, i[c - col])
+                        row += 1
+                    
+                    workbook.close()
+
+            # Declination
+            if dlg.decCheck.isChecked():
+                fileout = os.path.join(dlg.pathPicker.getPath(), "Declination_Mesh_{0}.{1}".format(len(self.__data["Centers"]), fmt))
+                if fmt == "csv":
+                    # Make header
+                    if dlg.stepCheck.isChecked():
+                        header = "," + ",".join([str(x) for x in self.__data["Centers"]])
+                    else:
+                        header = ""
+                    
+                    # Prepare data and add vectors if desired
+                    data = self.__data["Declination"]
+                    if dlg.sampleCheck.isChecked():
+                        data = np.insert(data, 0, values = self.__data["Samples"], axis = 1)
+
+                    try:                    
+                        np.savetxt(fileout, data, delimiter = ",", header = header)
+                    except PermissionError:
+                        err = QMessageBox(self)
+                        err.setText("Cannot open file for writing.")
+                        err.setInformativeText("Make sure the file is not locked/opened by another program.")
+                        err.setDetailedText("Affected file: {0}".format(fileout))
+                        err.exec()
+                        return
+
+                else:
+                    try:
+                        import xlsxwriter
+                    except ModuleNotFoundError:
+                        err = QMessageBox(self)
+                        err.setText("Cannot find xlsxwriter module.")
+                        err.setInformativeText("Install xlsxwriter module to enable xls(x) export.")
+                        err.setDetailedText("Try installing xlsxwriter via pip from the command line: pip install xlsxwriter")
+                        err.exec()
+                        return
+                    
+                    workbook = xlsxwriter.Workbook(fileout)
+                    worksheet = workbook.add_worksheet()
+
+                    col = 0
+                    if dlg.sampleCheck.isChecked():
+                        worksheet.write(0, col, "SampleID/Depth")
+                        for row, s in enumerate(self.__data["Samples"]):
+                            worksheet.write(row + 1, col, s)
+                        col += 1
+                    
+                    for c, center in enumerate(self.__data["Centers"]):
+                        worksheet.write(0, c + col, str(center))
+
+                    row = 1
+                    for d in self.__data["Declination"]:
+                        for c in range(col, len(d) + col):
+                            worksheet.write(row, c, d[c - col])
+                        row += 1
+                    
+                    workbook.close()
+
+            # MADp
+            if dlg.madpCheck.isChecked():
+                fileout = os.path.join(dlg.pathPicker.getPath(), "MADp_Mesh_{0}.{1}".format(len(self.__data["Centers"]), fmt))
+                if fmt == "csv":
+                    # Make header
+                    if dlg.stepCheck.isChecked():
+                        header = "," + ",".join([str(x) for x in self.__data["Centers"]])
+                    else:
+                        header = ""
+                    
+                    # Prepare data and add vectors if desired
+                    data = self.__data["MADp"]
+                    if dlg.sampleCheck.isChecked():
+                        data = np.insert(data, 0, values = self.__data["Samples"], axis = 1)
+
+                    try:                    
+                        np.savetxt(fileout, data, delimiter = ",", header = header)
+                    except PermissionError:
+                        err = QMessageBox(self)
+                        err.setText("Cannot open file for writing.")
+                        err.setInformativeText("Make sure the file is not locked/opened by another program.")
+                        err.setDetailedText("Affected file: {0}".format(fileout))
+                        err.exec()
+                        return
+
+                else:
+                    try:
+                        import xlsxwriter
+                    except ModuleNotFoundError:
+                        err = QMessageBox(self)
+                        err.setText("Cannot find xlsxwriter module.")
+                        err.setInformativeText("Install xlsxwriter module to enable xls(x) export.")
+                        err.setDetailedText("Try installing xlsxwriter via pip from the command line: pip install xlsxwriter")
+                        err.exec()
+                        return
+                    
+                    workbook = xlsxwriter.Workbook(fileout)
+                    worksheet = workbook.add_worksheet()
+
+                    col = 0
+                    if dlg.sampleCheck.isChecked():
+                        worksheet.write(0, col, "SampleID/Depth")
+                        for row, s in enumerate(self.__data["Samples"]):
+                            worksheet.write(row + 1, col, s)
+                        col += 1
+                    
+                    for c, center in enumerate(self.__data["Centers"]):
+                        worksheet.write(0, c + col, str(center))
+
+                    row = 1
+                    for m in self.__data["MADp"]:
+                        for c in range(col, len(m) + col):
+                            worksheet.write(row, c, m[c - col])
+                        row += 1
+                    
+                    workbook.close()
+
+            # MADo
+            if dlg.madoCheck.isChecked():
+                fileout = os.path.join(dlg.pathPicker.getPath(), "MADo_Mesh_{0}.{1}".format(len(self.__data["Centers"]), fmt))
+                if fmt == "csv":
+                    # Make header
+                    if dlg.stepCheck.isChecked():
+                        header = "," + ",".join([str(x) for x in self.__data["Centers"]])
+                    else:
+                        header = ""
+                    
+                    # Prepare data and add vectors if desired
+                    data = self.__data["MADo"]
+                    if dlg.sampleCheck.isChecked():
+                        data = np.insert(data, 0, values = self.__data["Samples"], axis = 1)
+
+                    try:                    
+                        np.savetxt(fileout, data, delimiter = ",", header = header)
+                    except PermissionError:
+                        err = QMessageBox(self)
+                        err.setText("Cannot open file for writing.")
+                        err.setInformativeText("Make sure the file is not locked/opened by another program.")
+                        err.setDetailedText("Affected file: {0}".format(fileout))
+                        err.exec()
+                        return
+
+                else:
+                    try:
+                        import xlsxwriter
+                    except ModuleNotFoundError:
+                        err = QMessageBox(self)
+                        err.setText("Cannot find xlsxwriter module.")
+                        err.setInformativeText("Install xlsxwriter module to enable xls(x) export.")
+                        err.setDetailedText("Try installing xlsxwriter via pip from the command line: pip install xlsxwriter")
+                        err.exec()
+                        return
+                    
+                    workbook = xlsxwriter.Workbook(fileout)
+                    worksheet = workbook.add_worksheet()
+
+                    col = 0
+                    if dlg.sampleCheck.isChecked():
+                        worksheet.write(0, col, "SampleID/Depth")
+                        for row, s in enumerate(self.__data["Samples"]):
+                            worksheet.write(row + 1, col, s)
+                        col += 1
+                    
+                    for c, center in enumerate(self.__data["Centers"]):
+                        worksheet.write(0, c + col, str(center))
+
+                    row = 1
+                    for m in self.__data["MADo"]:
+                        for c in range(col, len(m) + col):
+                            worksheet.write(row, c, m[c - col])
+                        row += 1
+                    
+                    workbook.close()
+
     @pyqtSlot()
     def __export_mesh(self):
-        pass
+        from palaeopca.P1Gui.P1ExportDialogs import P1MeshExport
+
+        dlg = P1MeshExport(self)
+        dlg.setWindowIcon(palaeopca.P1Utils.P1PixmapCache.getIcon("grip-vertical", "solid"))
+
+        if dlg.exec_() == QDialog.Accepted:
+            outfile = dlg.pathPicker.getPath()
+
+            kwargs = {
+                "figsize": (float(dlg.figure_width.text()), float(dlg.figure_height.text())),
+                "dpi": float(dlg.figure_dpi.text()),
+                "NRM": dlg.nrmCheck.isChecked(),
+                "Incl": dlg.incCheck.isChecked(),
+                "Decl": dlg.decCheck.isChecked(),
+                "MADp": dlg.madpCheck.isChecked(),
+                "MADo": dlg.madoCheck.isChecked(),
+                "invertY": dlg.invCheck.isChecked(),
+            }
+
+            mesh_plot(outfile, self.__data, save = True, **kwargs)
         
         
 

@@ -30,6 +30,9 @@ class P1SingleIntervalDialog(QDialog):
         self.volumeLine.setText(s.value("Params/Volume", 10))
         self.__layout.addRow(QLabel("Volume (g/cc)"), self.volumeLine)
 
+        self.anchorCheck = QCheckBox(self)
+        self.__layout.addRow(QLabel("Anchor"), self.anchorCheck)
+
         self.buttonBox = QDialogButtonBox(self)
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
@@ -62,6 +65,9 @@ class P1BestFitDialog(QDialog):
         self.volumeLine.setText(str(s.value("Params/Volume", "10")))
         self.__layout.addRow(QLabel("Volume (g/cc)"), self.volumeLine)
 
+        self.anchorCheck = QCheckBox(self)
+        self.__layout.addRow(QLabel("Anchor"), self.anchorCheck)
+
         self.buttonBox = QDialogButtonBox(self)
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
@@ -83,9 +89,11 @@ class P1MeshDialog(QDialog):
         self.stepSpin.setMaximum(len(steps))
 
         self.checkDifference = QCheckBox(self)
+        self.anchorCheck = QCheckBox(self)
 
         self.__layout.addRow(QLabel("Steps:"), self.stepSpin)
         self.__layout.addRow(QLabel("Difference Vector"), self.checkDifference)
+        self.__layout.addRow(QLabel("Anchor"), self.anchorCheck)
 
         self.buttonBox = QDialogButtonBox(self)
         self.buttonBox.setOrientation(Qt.Horizontal)

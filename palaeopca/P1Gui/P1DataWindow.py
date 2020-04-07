@@ -135,7 +135,13 @@ class P1DataWindow(QWidget):
 
             p = P1Backend()
             p.set_data(self.__data)
-            pca = p.run_single_interval(float(dlg.minCombo.currentText()), float(dlg.maxCombo.currentText()), dlg.NRMUnitCombo.currentText(), pbar = pbar)
+            pca = p.run_single_interval(
+                min_step = float(dlg.minCombo.currentText()), 
+                max_step = float(dlg.maxCombo.currentText()), 
+                NRM_unit = dlg.NRMUnitCombo.currentText(), 
+                anchor = dlg.anchorCheck.isChecked(), 
+                pbar = pbar
+            )
             pbar.progress.setValue(100)
             pbar.close()
 
@@ -158,7 +164,12 @@ class P1DataWindow(QWidget):
 
             p = P1Backend()
             p.set_data(self.__data)
-            pca = p.run_best_fit(dlg.minSpin.value(), dlg.NRMUnitCombo.currentText(), pbar = pbar)
+            pca = p.run_best_fit(
+                min_steps = dlg.minSpin.value(), 
+                NRM_unit = dlg.NRMUnitCombo.currentText(), 
+                anchor = dlg.anchorCheck.isChecked(),
+                pbar = pbar
+                )
             pbar.progress.setValue(100)
             pbar.close()
             
@@ -181,7 +192,12 @@ class P1DataWindow(QWidget):
 
             p = P1Backend()
             p.set_data(self.__data)
-            pca = p.run_mesh(window = dlg.stepSpin.value(), diff = dlg.checkDifference.isChecked(), pbar = pbar)
+            pca = p.run_mesh(
+                window = dlg.stepSpin.value(), 
+                diff = dlg.checkDifference.isChecked(), 
+                anchor = dlg.anchorCheck.isChecked(),
+                pbar = pbar
+                )
             pbar.progress.setValue(100)
             pbar.close()
 

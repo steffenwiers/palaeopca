@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>palaeopca.P1Mpl.P1Sequence module &#8212; palaeopca  documentation</title>
+    <link rel="stylesheet" href="_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="palaeopca.P1Mpl.P1Mesh module" href="palaeopca.P1Mpl.P1Mesh.html" />
+    <link rel="prev" title="palaeopca.P1Mpl.P1Zijder module" href="palaeopca.P1Mpl.P1Zijder.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="_static/solarized-dark.css" rel="stylesheet">
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Mpl.P1Mesh.html" title="palaeopca.P1Mpl.P1Mesh module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Mpl.P1Zijder.html" title="palaeopca.P1Mpl.P1Zijder module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">palaeopca  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="palaeopca.html" >palaeopca api</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="palaeopca.P1Mpl.html" accesskey="U">palaeopca.P1Mpl package</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="palaeopca.P1Mpl.P1Zijder.html"
+                        title="previous chapter">palaeopca.P1Mpl.P1Zijder module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="palaeopca.P1Mpl.P1Mesh.html"
+                        title="next chapter">palaeopca.P1Mpl.P1Mesh module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/palaeopca.P1Mpl.P1Sequence.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-palaeopca.P1Mpl.P1Sequence">
+<span id="palaeopca-p1mpl-p1sequence-module"></span><h1>palaeopca.P1Mpl.P1Sequence module<a class="headerlink" href="#module-palaeopca.P1Mpl.P1Sequence" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="palaeopca.P1Mpl.P1Sequence.sequence_plot">
+<code class="sig-prename descclassname">palaeopca.P1Mpl.P1Sequence.</code><code class="sig-name descname">sequence_plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">outfile</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">indata</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">save</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; matplotlib.pyplot.figure<a class="headerlink" href="#palaeopca.P1Mpl.P1Sequence.sequence_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a sequence (downcore) plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>outfile</strong> (<em>string</em>) – full path to file, format will be determined from file extension</p></li>
+<li><p><strong>indata</strong> (<em>numpy.ndarray</em>) – array of pca results [SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step]</p></li>
+<li><p><strong>save</strong> (<em>bool</em>) – save the plot (default: False)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>figure</em> (<code class="docutils literal notranslate"><span class="pre">matplotlib.Figure</span></code>) –
+matplotlib figure instance (default: None)</p></li>
+<li><p><em>figsize</em> (<code class="docutils literal notranslate"><span class="pre">tuple</span></code>) –
+size of figure in inches (default: (5, 6))</p></li>
+<li><p><em>dpi</em> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) –
+resolution of figure (default: 300)</p></li>
+<li><p><em>NRM_unit</em> (<code class="docutils literal notranslate"><span class="pre">string</span></code>) –
+units of NRM for label (default: “”)</p></li>
+<li><p><em>NRM</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) –
+plot NRM (default: True)</p></li>
+<li><p><em>Incl</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) –
+plot Inclination (default: True)</p></li>
+<li><p><em>Decl</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) –
+plot Declination (default: True)</p></li>
+<li><p><em>MADp</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) –
+plot MADp (default: True)</p></li>
+<li><p><em>MADo</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) –
+plot MADo (default: True)</p></li>
+<li><p><em>invertY</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) –
+invert order of samples (default: True)</p></li>
+<li><p><em>ylabel</em> (<code class="docutils literal notranslate"><span class="pre">string</span></code>) –
+label for y-axis (default: “”)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>matplotlib figure instance.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>matplotlib.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Mpl.P1Mesh.html" title="palaeopca.P1Mpl.P1Mesh module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="palaeopca.P1Mpl.P1Zijder.html" title="palaeopca.P1Mpl.P1Zijder module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">palaeopca  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="palaeopca.html" >palaeopca api</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="palaeopca.P1Mpl.html" >palaeopca.P1Mpl package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2020, Steffen Wiers.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.0.0.Theme is <a href="http://github.com/vimalkvn/solar-theme">Solar</a>
+    </div>
+  </body>
+</html>

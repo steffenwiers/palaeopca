@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>palaeopca &#8212; palaeopca  documentation</title>
+    <link rel="stylesheet" href="_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="palaeopca gui" href="gui.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="_static/solarized-dark.css" rel="stylesheet">
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gui.html" title="palaeopca gui"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">palaeopca  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">palaeopca</a><ul>
+<li><a class="reference internal" href="#palaeo-pca">Palaeo PCA</a></li>
+<li><a class="reference internal" href="#main-features">Main features</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#pypi-recommended">PyPI (Recommended)</a></li>
+<li><a class="reference internal" href="#manual">Manual</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gui-documentation">Gui Documentation</a></li>
+<li><a class="reference internal" href="#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gui.html"
+                        title="next chapter">palaeopca gui</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="palaeopca">
+<h1>palaeopca<a class="headerlink" href="#palaeopca" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="palaeo-pca">
+<h2>Palaeo PCA<a class="headerlink" href="#palaeo-pca" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">A python tool to perform principal component (PCA) analysis on palaeomagnetic data sets.</div>
+</div>
+</div>
+<div class="section" id="main-features">
+<h2>Main features<a class="headerlink" href="#main-features" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">palaeopca provides three convinient functions for PCA of palaeomagnetic sequence data, such as continues data from marine sediment cores. The underlying functionallity can be used without the gui by importing P1Backend directly into your code. The backend provides:</div>
+</div>
+<ul class="simple">
+<li><p>Single interval PCA to analyse all samples in a given interval</p></li>
+<li><p>Best fit PCA to find the lowest possible medium angular deviation (MAD) for each sample</p></li>
+<li><p>Mesh PCA to run a moving window PCA</p></li>
+</ul>
+<div class="line-block">
+<div class="line">The user interface makes it possible to run ppca without any knowledge of the python programming language. It allows for data import, display and analysis and well as export of the results as comma separated files, Excel files and images.</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">The minimum required packages to run ppca are NumPy and Matplotlib. For gui support PyQt5 and for Excel file integration xlsxwriter are required.</div>
+</div>
+<div class="section" id="pypi-recommended">
+<h3>PyPI (Recommended)<a class="headerlink" href="#pypi-recommended" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">To install ppca via pip simply run the following commands:</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">palaeopca</span> <span class="pre">numpy</span> <span class="pre">matplotlib</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">PyQt5</span> <span class="pre">xlsxwriter</span></code> (optional)</div>
+</div>
+</div>
+<div class="section" id="manual">
+<h3>Manual<a class="headerlink" href="#manual" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">To install palaeopca manually you need a running version of python 3. Step-by-step instructions:</div>
+</div>
+<div class="line-block">
+<div class="line">1. Clone the repository.</div>
+<div class="line"><br /></div>
+<div class="line">2. Open a command promt (Windows) or a terminal window (Unix) and navigate to the root folder of ppca (the one that contains setup.py).</div>
+<div class="line"><br /></div>
+<div class="line">3. Create a python virtual environment by running</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">palaeopca_venv</span></code></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">4. Activate the virtual environment</div>
+<div class="line-block">
+<div class="line">Windows: <code class="docutils literal notranslate"><span class="pre">.\palaeopca_venv\Scripts\activate</span></code></div>
+<div class="line">If you get an Execution Policy error on Windows run</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Set-ExecutionPolicy</span> <span class="pre">Unrestricted</span> <span class="pre">-Scope</span> <span class="pre">CurrentUser</span></code></div>
+<div class="line">Unix: <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">./venv/bin/activate`</span></code></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">5. Install required dependencies into the virtual environment</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span> <span class="pre">matplotlib</span></code></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">6. Install optional dependencies  into the virtual environment (optional)</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">PyQt5</span> <span class="pre">xlsxwriter</span></code></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">7. Install the palaeopca package into the virtual environment</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gui-documentation">
+<h2>Gui Documentation<a class="headerlink" href="#gui-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">palaeopca gui</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="api-documentation">
+<h2>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="palaeopca.html">palaeopca api</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="palaeopca.P1Backend.html">palaeopca.P1Backend package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="palaeopca.P1Backend.P1Backend.html">palaeopca.P1Backend.P1Backend module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="palaeopca.P1Backend.P1DataObject.html">palaeopca.P1Backend.P1DataObject module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="palaeopca.P1Mpl.html">palaeopca.P1Mpl package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="palaeopca.P1Mpl.P1Zijder.html">palaeopca.P1Mpl.P1Zijder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="palaeopca.P1Mpl.P1Sequence.html">palaeopca.P1Mpl.P1Sequence module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="palaeopca.P1Mpl.P1Mesh.html">palaeopca.P1Mpl.P1Mesh module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gui.html" title="palaeopca gui"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">palaeopca  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2020, Steffen Wiers.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.0.0.Theme is <a href="http://github.com/vimalkvn/solar-theme">Solar</a>
+    </div>
+  </body>
+</html>
