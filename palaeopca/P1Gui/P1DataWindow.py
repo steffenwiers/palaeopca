@@ -140,6 +140,7 @@ class P1DataWindow(QWidget):
                 max_step = float(dlg.maxCombo.currentText()), 
                 NRM_unit = dlg.NRMUnitCombo.currentText(), 
                 anchor = dlg.anchorCheck.isChecked(), 
+                origin = dlg.originCheck.isChecked(),
                 pbar = pbar
             )
             pbar.progress.setValue(100)
@@ -167,7 +168,8 @@ class P1DataWindow(QWidget):
             pca = p.run_best_fit(
                 min_steps = dlg.minSpin.value(), 
                 NRM_unit = dlg.NRMUnitCombo.currentText(), 
-                anchor = dlg.anchorCheck.isChecked(),
+                anchor = dlg.anchorCheck.isChecked(), 
+                origin = dlg.originCheck.isChecked(),
                 pbar = pbar
                 )
             pbar.progress.setValue(100)
@@ -195,7 +197,8 @@ class P1DataWindow(QWidget):
             pca = p.run_mesh(
                 window = dlg.stepSpin.value(), 
                 diff = dlg.checkDifference.isChecked(), 
-                anchor = dlg.anchorCheck.isChecked(),
+                anchor = dlg.anchorCheck.isChecked(), 
+                origin = dlg.originCheck.isChecked(),
                 pbar = pbar
                 )
             pbar.progress.setValue(100)

@@ -33,6 +33,9 @@ class P1SingleIntervalDialog(QDialog):
         self.anchorCheck = QCheckBox(self)
         self.__layout.addRow(QLabel("Anchor"), self.anchorCheck)
 
+        self.originCheck = QCheckBox(self)
+        self.__layout.addRow(QLabel("Include origin"), self.originCheck)
+
         self.buttonBox = QDialogButtonBox(self)
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
@@ -68,6 +71,9 @@ class P1BestFitDialog(QDialog):
         self.anchorCheck = QCheckBox(self)
         self.__layout.addRow(QLabel("Anchor"), self.anchorCheck)
 
+        self.originCheck = QCheckBox(self)
+        self.__layout.addRow(QLabel("Include origin"), self.originCheck)
+
         self.buttonBox = QDialogButtonBox(self)
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
@@ -90,10 +96,12 @@ class P1MeshDialog(QDialog):
 
         self.checkDifference = QCheckBox(self)
         self.anchorCheck = QCheckBox(self)
+        self.originCheck = QCheckBox(self)
 
         self.__layout.addRow(QLabel("Steps:"), self.stepSpin)
         self.__layout.addRow(QLabel("Difference Vector"), self.checkDifference)
         self.__layout.addRow(QLabel("Anchor"), self.anchorCheck)
+        self.__layout.addRow(QLabel("Include origin"), self.originCheck)
 
         self.buttonBox = QDialogButtonBox(self)
         self.buttonBox.setOrientation(Qt.Horizontal)

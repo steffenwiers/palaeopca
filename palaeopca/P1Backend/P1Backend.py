@@ -62,7 +62,7 @@ class P1Backend(object):
         """
         return self.__data
 
-    def run_single_interval(self, min_step: float=0.0, max_step: float=100.0, NRM_unit: str="A/m", anchor: bool=False, pbar=None) -> np.ndarray:
+    def run_single_interval(self, min_step: float=0.0, max_step: float=100.0, NRM_unit: str="A/m", anchor: bool=False, origin: bool=False, pbar=None) -> np.ndarray:
         """
         Run a principal component analysis (PCA) on the data in the given interval.
 
@@ -70,12 +70,14 @@ class P1Backend(object):
         :type max_step: float
         :type NRM_unit: string
         :type anchor: bool
+        :type origin: bool
         :type pbar: P1ProgressBar
 
         :param min_step: first step to be used, in step units (e.g., mT)
         :param max_step: last step to be used, in step units (e.g., mT)
         :param NRM_unit: units for NRM (str, default = A/m)
-        :param anchor: anchor pca at origin
+        :param anchor: anchor pca
+        :param origin: include origin
         :param pbar: progress bar instance, only used in gui mode
         
         :return: array with the following columns: SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step
@@ -101,7 +103,7 @@ class P1Backend(object):
             B = A[np.where(np.logical_and(self.__data.get_steps() >= min_step, self.__data.get_steps() <= max_step)), :][0]
             
             # Run PCA and save results
-            results = self.ppca(B, anchor = anchor)
+            results = self.ppca(B, anchor=anchor, origin=origin)
 
             outdata[n, 2] = results["Inclination"]
             outdata[n, 3] = results["Declination"]
@@ -118,18 +120,20 @@ class P1Backend(object):
 
         return outdata
 
-    def run_best_fit(self, min_steps: int=3, NRM_unit: str="A/m", anchor: bool=False, pbar=None) -> np.ndarray:
+    def run_best_fit(self, min_steps: int=3, NRM_unit: str="A/m", anchor: bool=False, origin: bool=False, pbar=None) -> np.ndarray:
         """
         Run a principal component analysis (PCA) on the data minimizing the MADp.
 
         :type min_steps: integer
         :type NRM_unit: string
         :type anchor: bool
+        :type origin: bool
         :type pbar: P1ProgressBar
 
         :param min_steps: minimum number of steps to be used (default: 3)
         :param NRM_unit: units for NRM (default = A/m)
-        :param anchor: anchor pca at origin
+        :param anchor: anchor pca
+        :param origin: include origin
         :param pbar: progress bar instance, only used in gui mode
         
         :return: array with the following columns: SampleID/Depth, NRM, Inclination, Declination, MADp, MADo, Min step, Max step
@@ -162,7 +166,7 @@ class P1Backend(object):
             while window <= len(self.__data.get_steps()):
                 for index_0 in range(len(self.__data.get_steps()[:-window+1])):
                     B = A[index_0:index_0 + window, :]
-                    results = self.ppca(B, anchor = anchor)
+                    results = self.ppca(B, anchor=anchor, origin=origin)
                     if results["MADp"] < outdata[n, 4]:
                         outdata[n, 2] = results["Inclination"]
                         outdata[n, 3] = results["Declination"]
@@ -181,7 +185,7 @@ class P1Backend(object):
 
         return outdata
 
-    def run_mesh(self, window: int=3, diff: bool=False, anchor: bool=False, pbar=None) -> Dict:
+    def run_mesh(self, window: int=3, diff: bool=False, anchor: bool=False, origin: bool=False, pbar=None) -> Dict:
         """
         | Run a moving window principal component analysis (PCA) on the data.
         | 
@@ -198,11 +202,13 @@ class P1Backend(object):
         :type window: integer
         :type diff: bool
         :type anchor: bool
+        :type origin: bool
         :type pbar: P1Progressbar
 
         :param window: interval length for pca
         :param diff: use difference vector (true) or original data (false)
-        :param anchor: anchor pca at origin
+        :param anchor: anchor pca
+        :param origin: include origin
         :param pbar: progress bar instance, only used in gui mode
         
         :return: dictionary with the following keys: Samples, Centers, Steps, M, Inclination, Declination, MADp, MADo
@@ -251,7 +257,7 @@ class P1Backend(object):
                     outdata["Centers"][index_0] = self.__data.get_steps()[index_0:index_0 + window].mean()
                 
                 B = A[index_0:index_0 + window, :]
-                results = self.ppca(B, anchor = anchor)
+                results = self.ppca(B, anchor=anchor, origin=origin)
                 outdata["Inclination"][n, index_0] = results["Inclination"]
                 outdata["Declination"][n, index_0] = results["Declination"]
                 outdata["MADp"][n, index_0] = results["MADp"]
@@ -306,7 +312,7 @@ class P1Backend(object):
         """
         return A - A.mean(axis = 0)
 
-    def ppca(self, indata: np.ndarray, anchor: bool=False, vec: int=0) -> Dict:
+    def ppca(self, indata: np.ndarray, anchor: bool=False, origin: bool=False, vec: int=0) -> Dict:
         """
         | Function to perform a principal component analysis (PCA) on set of (x, y, z) vectors by singular value decomposition (SVD)
         | 
@@ -321,22 +327,28 @@ class P1Backend(object):
 
         :type indata: numpy.ndarray
         :type anchor: bool
+        :type origin: bool
         :type vec: integer
 
         :param indata: data matrix with variables (x, y, z) in columns and observations in rows
-        :param anchor: anchor pca at origin
+        :param anchor: anchor pca
+        :param origin: include origin
         :param vec: eigenvector to return results from (default: 0 [largest])
         
         :returns: dictionary with the following keys: Inclination, Declination, MADp, MADo, Evals, Evecs, Variance_Explained
         :rtype: dictionary
         """
 
+        # Add origin
+        if origin: indata = np.append(indata, [[0, 0, 0]], axis = 0)
+
         # Mean center or anchor
         if anchor: M = indata
         else: M = self.center(indata)
         
         # Calculate covariance matrix
-        B = np.cov(M.T)
+        #B = np.cov(M.T)
+        B = self.calc_OTensor(M)
 
         # SVD
         # Returns empty results dictionary when svd does not converge
@@ -409,3 +421,20 @@ class P1Backend(object):
         }
 
         return results
+
+    def calc_OTensor(self, indata: np.ndarray) -> np.ndarray:
+        """
+        :type indata: numpy.ndarray
+        :param indata: data matrix with variables (x, y, z) in columns and observations in rows
+        
+        :returns: Orientation tensor of indata matrix
+        :rtype: numpy.ndarray
+        """
+
+        T = np.asarray([
+            [np.sum(indata[:,0]**2), np.sum(indata[:,0]*indata[:,1]), np.sum(indata[:,0]*indata[:,2])],
+            [np.sum(indata[:,1]*indata[:,0]), np.sum(indata[:,1]**2), np.sum(indata[:,1]*indata[:,2])],
+            [np.sum(indata[:,2]*indata[:,0]), np.sum(indata[:,2]*indata[:,1]), np.sum(indata[:,2]**2)],
+        ])
+
+        return T

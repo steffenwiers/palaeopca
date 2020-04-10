@@ -97,7 +97,7 @@ def sequence_plot(outfile: str, indata: np.ndarray, save = False, **kwargs) -> p
     for n in range(ncols):
         # Add axis and data
         ax[n] = fig.add_subplot(grid[0, n])
-        ax[n].plot(indata[:, indices[n]], indata[:,0], 'o-', clip_on = False)
+        ax[n].plot(indata[:, indices[n]], indata[:,0], '-', clip_on = False)
 
         # Set spines according to column
         if n == 0:
