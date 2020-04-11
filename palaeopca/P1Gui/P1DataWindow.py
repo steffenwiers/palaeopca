@@ -204,6 +204,9 @@ class P1DataWindow(QWidget):
             pbar.progress.setValue(100)
             pbar.close()
 
+            # Add header
+            pca["header"] = self.__data.get_header()
+
             subwindow = QMdiSubWindow(self.parent().mdiArea())
             subwindow.setWindowTitle("PCA Results Mesh - {0}".format(self.parent().windowTitle().split("-")[1]))
             subwindow.setWindowIcon(palaeopca.P1Utils.P1PixmapCache.getIcon("grip-vertical", "solid"))

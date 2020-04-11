@@ -7,6 +7,7 @@ from matplotlib import gridspec
 
 mpl.use("Agg")
 
+import palaeopca
 from palaeopca.P1Utils.P1PCALine import PCALine
 from palaeopca.P1Backend.P1DataObject import P1DataObject
 
@@ -49,7 +50,7 @@ def sequence_plot(outfile: str, indata: np.ndarray, save = False, **kwargs) -> p
     :rtype: matplotlib.Figure
     """
     # Set style
-    plt.style.use("./palaeopca/P1Mpl/styles/sequence.mplstyle")
+    plt.style.use("{0}/P1Mpl/styles/sequence.mplstyle".format(palaeopca.basedir))
 
     # Set parameters
     if "figure" not in kwargs:

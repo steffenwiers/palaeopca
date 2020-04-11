@@ -12,6 +12,7 @@ mpl.use("Agg")
 if "PyQt5" in sys.modules:
     from PyQt5.QtWidgets import QApplication
 
+import palaeopca
 from palaeopca.P1Utils.P1PCALine import PCALine
 from palaeopca.P1Backend.P1DataObject import P1DataObject
 
@@ -140,7 +141,7 @@ def zijder_plot(sample: str, indata: np.ndarray, xh: str="N", xv: str="N", y: st
     :rtype: matplotlib.Figure or matplotlib.Axis
     """
     # Set style
-    plt.style.use("./palaeopca/P1Mpl/styles/zijder.mplstyle")
+    plt.style.use("{0}/P1Mpl/styles/zijder.mplstyle".format(palaeopca.basedir))
 
     # Set parameters
     if "figure" not in kwargs:

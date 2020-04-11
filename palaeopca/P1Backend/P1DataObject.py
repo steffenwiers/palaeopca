@@ -28,6 +28,14 @@ class P1DataObject(object):
         :param sep: file delimiter
         :param skip_header: header lines to skip
         """
+        # Try to read the first line as the header
+        if skip_header > 0:
+            with open(infile, 'r') as fin:
+                header = fin.readline()
+            fin.close()
+            self.__header = header.split(sep)
+        else:
+            self.__header = []
 
         data = np.genfromtxt(infile, delimiter = sep, skip_header = skip_header)
         data = data.reshape(len(np.unique(data[:, 0])), len(np.unique(data[:, 1])), data.shape[1])
@@ -54,11 +62,23 @@ class P1DataObject(object):
         """
         self.__units = units
 
+    def set_header(self, new_header: list):
+        """
+        Set data header
+
+        :type new_header: list
+        :param new_header: list of header labels, must be of length (5)
+        """
+        self.__header = new_header
+
     def get_units(self):
         """
         Returns data units
         """
         return self.__units
+
+    def get_header(self) -> list:
+        return self.__header
 
     def get_volume(self):
         """

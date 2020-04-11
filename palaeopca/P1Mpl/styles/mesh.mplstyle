@@ -134,7 +134,7 @@ lines.markersize  : 2            ## markersize, in points
 ## The font.size property is the default font size for text, given in pts.
 ## 10 pt is the standard value.
 
-font.family         : sans-serif
+font.family         : serif
 font.style          : normal
 font.variant        : normal
 font.weight         : normal
@@ -145,7 +145,8 @@ font.stretch        : normal
 ## relative to font.size, using the following values: xx-small, x-small,
 ## small, medium, large, x-large, xx-large, larger, or smaller
 font.size           : 8.0
-font.sans-serif     : Arial
+#font.sans-serif     : Arial
+font.serif          : Times New Roman
 #font.serif          : DejaVu Serif, Bitstream Vera Serif, Computer Modern Roman, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
 #font.sans-serif     : DejaVu Sans, Bitstream Vera Sans, Computer Modern Sans Serif, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
 #font.cursive        : Apple Chancery, Textile, Zapf Chancery, Sand, Script MT, Felipa, cursive

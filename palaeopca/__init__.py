@@ -10,3 +10,4 @@ __version__ = '.'.join(str(e) for e in __version_info__)
 __description__ = "Tool to perform principal component analysis on palaeomagnetic data sets."
 
 basedir = os.path.dirname(os.path.realpath(__file__))
+basedir = basedir.replace("\\", "/")

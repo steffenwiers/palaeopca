@@ -375,7 +375,10 @@ class P1Backend(object):
 
         # Determine direction
         first = M[0]
-        last = M[-1:]
+        if origin:
+            last = M[-2:-1]
+        else:
+            last = M[-1:]
         trend = last - first
 
         # When two vectors generally point in the same direction, their dot product is positive
@@ -435,6 +438,6 @@ class P1Backend(object):
             [np.sum(indata[:,0]**2), np.sum(indata[:,0]*indata[:,1]), np.sum(indata[:,0]*indata[:,2])],
             [np.sum(indata[:,1]*indata[:,0]), np.sum(indata[:,1]**2), np.sum(indata[:,1]*indata[:,2])],
             [np.sum(indata[:,2]*indata[:,0]), np.sum(indata[:,2]*indata[:,1]), np.sum(indata[:,2]**2)],
-        ])
+        ]) * 1 / indata.shape[0]
 
         return T

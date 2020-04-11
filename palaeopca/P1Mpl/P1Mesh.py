@@ -1,5 +1,6 @@
 # Imports
 import os
+import math
 from typing import Dict
 import numpy as np
 import matplotlib as mpl
@@ -9,6 +10,7 @@ from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
 mpl.use("Agg")
 
+import palaeopca
 from palaeopca.P1Utils.P1PCALine import PCALine
 from palaeopca.P1Backend.P1DataObject import P1DataObject
 
@@ -66,7 +68,7 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
     * MADo: medium angular deviation, oblate matrix with observations in rows, windows in columns.
     """
     # Set style
-    plt.style.use("./palaeopca/P1Mpl/styles/mesh.mplstyle")
+    plt.style.use("{0}/P1Mpl/styles/mesh.mplstyle".format(palaeopca.basedir))
 
     # Set parameters
     if "figure" not in kwargs:
@@ -184,7 +186,7 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
             y_adjust = -0.115
         
         # Invert y-axis if desired and set limits to min - max
-        ax[n].set_ylim([indata["Samples"].min(), indata["Samples"].max()])
+        ax[n].set_ylim([math.floor(indata["Samples"].min()), math.ceil(indata["Samples"].max())])
         if kwargs["invertY"]: ax[n].invert_yaxis()
 
         # Set specific parameters
@@ -209,6 +211,7 @@ def mesh_plot(outfile: str, indata: Dict, save = False, **kwargs) -> plt.figure:
         fig.colorbar(mesh, cax = cax[n], orientation = "horizontal", ticks = ticks)
         if loc == "upper center":
             cax[n].tick_params(axis='x', top = True, bottom = False, labeltop = True, labelbottom = False)
+            cax[n].xaxis.set_ticks_position("top")
             cax[n].xaxis.set_label_position("top")
         if indices[n] == 1:
             cax[n].set_xlim([1,0])

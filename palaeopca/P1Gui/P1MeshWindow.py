@@ -136,7 +136,7 @@ class P1MeshWindow(QWidget):
 
     def __update_mesh(self):
         self.__figure.clf()
-        self.__figure = mesh_plot("", self.__data, figure = self.__figure)
+        self.__figure = mesh_plot("", self.__data, figure=self.__figure, ylabel=self.__data["header"][0])
         self.__canvas.draw()
         QCoreApplication.processEvents()
 
