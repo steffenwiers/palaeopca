@@ -12,9 +12,8 @@ The user interface makes it possible to run ppca without any knowledge of the py
 ## Installation
 The minimum required packages to run ppca are NumPy and Matplotlib. For gui support PyQt5 and for Excel file integration xlsxwriter are required.
 ### PyPI (Recommended)
-To install ppca via pip simply run the following commands:<br>
-```pip install palaeopca numpy matplotlib```<br>
-```pip install PyQt5 xlsxwriter``` (optional)
+Currently palaeopca is not published as a PyPI package
+
 ### Manual
 To install palaeopca manually you need a running version of python 3. Step-by-step instructions:
  1. Clone the repository.
